@@ -1,0 +1,1 @@
+[{"orderId":1,"customerId":1,"type":"Sample Type","date":"2022-02-02","status":"Pending","totalAmount":100.0},{"orderId":2,"customerId":3,"type":"Another Type","date":"2022-02-02","status":"Completed","totalAmount":250.0},{"orderId":22,"customerId":3,"type":"Advertisement","date":"2022-03-21","status":"Pending","totalAmount":400.0}]
