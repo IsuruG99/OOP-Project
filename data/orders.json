@@ -1,0 +1,18 @@
+[
+  {
+    "orderId": 1,
+    "customerId": 0,
+    "type": "Sample Type",
+    "date": "2023-07-04",
+    "status": "Pending",
+    "totalAmount": 100.0
+  },
+  {
+    "orderId": 2,
+    "customerId": 1,
+    "type": "Another Type",
+    "date": "2023-07-05",
+    "status": "Completed",
+    "totalAmount": 250.0
+  }
+]

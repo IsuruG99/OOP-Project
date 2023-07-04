@@ -1,54 +1,63 @@
 package view;
 
 import controller.OrderController;
-import model.Order;
 
 import javax.swing.*;
-import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 public class OrderView extends JFrame {
+    private JTable orderTable;
+    private DefaultTableModel tableModel;
+    private JScrollPane orderScroll;
+    private JPanel orderPane;
 
     public OrderView() {
-        // Set up the JFrame properties
-        setTitle("Order Management System");
-        setSize(800, 600);
+        initializeComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Initialize the components and layout
-        initComponents();
+        setTitle("Order View");
+        setSize(500, 400);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
-    public void setController(OrderController controller) {
+    private void initializeComponents() {
+        // Create the table with default table model
+        orderTable = new JTable();
+        tableModel = new DefaultTableModel();
+        orderTable.setModel(tableModel);
+
+        // Create the scroll pane and add the table to it
+        JScrollPane scrollPane = new JScrollPane(orderTable);
+
+        // Create the main panel and add the scroll pane to it
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // Create the order pane and add the main panel to it
+        orderPane = new JPanel(new BorderLayout());
+        orderPane.add(mainPanel, BorderLayout.CENTER);
+
+        // Set the order pane as the content pane of the frame
+        setContentPane(orderPane);
     }
 
-    public void displayOrders(List<Order> orders) {
-        // Display the list of orders in the view
-    }
-
-    public void promptAddOrder() {
-        // Display a prompt for adding a new order
-    }
-
-    public void promptUpdateOrder(Order order) {
-        // Display a prompt for updating an existing order
-    }
-
-    public void promptRemoveOrder(int orderId) {
-        // Display a prompt for removing an order
-    }
-
-    private void initComponents() {
-        // Initialize and add the GUI components to the JFrame
-        // Set up event listeners for user interactions
+    public void displayOrders(Object[][] data, String[] columns) {
+        // Set the table model data and columns
+        tableModel.setDataVector(data, columns);
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            OrderView view = new OrderView();
-            Order.OrderModel model = new Order.OrderModel();
-            OrderController controller = new OrderController(model, view);
-            view.setController(controller);
-            view.setVisible(true);
+            OrderView orderView = new OrderView();
+
+            // Load orders from JSON file using OrderController
+            OrderController orderController = new OrderController();
+            Object[][] data = orderController.getAllOrders();
+            String[] columns = {"Order ID", "Customer ID", "Type", "Date", "Status", "Total Amount"};
+
+            // Display the orders in the view
+            orderView.displayOrders(data, columns);
         });
     }
 }

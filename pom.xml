@@ -9,14 +9,18 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>src/main/java/customerorderscustomerorders</module>
-        <module>src/main/java/supplierssuppliers</module>
+        <module>src/main/java/customerorders</module>
+        <module>src/main/java/suppliers</module>
     </modules>
-
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 </project>
