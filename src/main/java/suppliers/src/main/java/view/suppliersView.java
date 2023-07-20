@@ -34,7 +34,7 @@ public class suppliersView extends JFrame {
     public void displaySuppliers(Object[][] data, String[] columns) {
         tableModel.setDataVector(data, columns);
     }
-    // Load suppliers from controller
+    // Load suppliers from controller and display them in the view (used in Main.java)
     public void loadSuppliersFromController() {
         suppliersController suppliersController = new suppliersController(); // Load suppliers from JSON file using suppliersController
         Object[][] data = suppliersController.viewFromJSON();

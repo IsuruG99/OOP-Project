@@ -29,8 +29,8 @@ public class DeleteSupplierForm {
         });
     }
 
-    // display delete supplier form
-    private void displayDeleteSupplierForm() {
+    // display delete supplier form (used in Main.java)
+    void displayDeleteSupplierForm() {
         JFrame frame = new JFrame("Delete Supplier");
         frame.setContentPane(new DeleteSupplierForm().deleteSupplierPane);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

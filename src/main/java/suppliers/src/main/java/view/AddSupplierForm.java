@@ -20,6 +20,7 @@ public class AddSupplierForm extends JFrame {
     public AddSupplierForm() {
         // do not dynamically create a new controller object
         // just use the one you already have
+
         suppliersController suppliersController = new suppliersController();
 
         addSupplierButton.addActionListener(e -> {
@@ -39,8 +40,8 @@ public class AddSupplierForm extends JFrame {
         });
     }
 
-    // display add supplier form
-    private void displayAddSupplierForm() {
+    // display add supplier form (used in Main.java)
+    public void displayAddSupplierForm() {
         JFrame frame = new JFrame("Add Supplier");
         frame.setContentPane(new AddSupplierForm().addSupplierPane);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -48,11 +49,15 @@ public class AddSupplierForm extends JFrame {
         frame.setVisible(true);
     }
 
-    // Main method
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             AddSupplierForm addSupplierForm = new AddSupplierForm();
             addSupplierForm.displayAddSupplierForm();
         });
+    }
+
+    // getters
+    public JPanel getAddSupplierPane() {
+        return addSupplierPane;
     }
 }
