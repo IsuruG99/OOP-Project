@@ -2,9 +2,9 @@ package view;
 
 import controller.suppliersController;
 import javax.swing.*;
+import java.util.Objects;
 
 public class AddSupplierForm extends JFrame {
-    private JLabel lblAddSupplierID;
     private JTextField txtAddSupplierID;
     private JLabel lblAddName;
     private JTextField txtAddName;
@@ -16,6 +16,7 @@ public class AddSupplierForm extends JFrame {
     private JButton addSupplierButton;
     private JLabel lblAddProfession;
     private JPanel addSupplierPane;
+    private JComboBox cbAddProfession;
 
     public AddSupplierForm() {
         // do not dynamically create a new controller object
@@ -24,18 +25,15 @@ public class AddSupplierForm extends JFrame {
         suppliersController suppliersController = new suppliersController();
 
         addSupplierButton.addActionListener(e -> {
-            String supplierIdStr = txtAddSupplierID.getText();
-            int supplierId = Integer.parseInt(supplierIdStr);
-
             String name = txtAddName.getText();
 
-            String profession = txtAddProfession.getText();
+            String profession = Objects.requireNonNull(cbAddProfession.getSelectedItem()).toString();
 
             String contactNumber = txtAddContact.getText();
 
             String email = txtAddEmail.getText();
 
-            suppliersController.addToJSON(supplierId, name, profession, contactNumber, email);
+            suppliersController.addToJSON(name, profession, contactNumber, email);
             JOptionPane.showMessageDialog(addSupplierPane, "Supplier added successfully.");
         });
     }

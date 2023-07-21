@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddOrderForm {
     private JPanel addOrderPane;
@@ -24,6 +25,7 @@ public class AddOrderForm {
     private JTextField txtAddTotal;
     private JTextField txtAddOrderID;
     private JButton addOrderButton;
+    private JComboBox cbAddType;
 
     private OrderController orderController;
 
@@ -40,7 +42,7 @@ public class AddOrderForm {
                 String customerIdStr = txtAddCustomerID.getText();
                 int customerId = Integer.parseInt(customerIdStr);
 
-                String type = txtAddType.getText();
+                String type = Objects.requireNonNull(cbAddType.getSelectedItem()).toString();
 
                 String dateString = txtAddDate.getText();
                 Date date;
@@ -68,7 +70,6 @@ public class AddOrderForm {
 
                 // Clear the input fields
                 txtAddCustomerID.setText("");
-                txtAddType.setText("");
                 txtAddDate.setText("");
                 txtAddTotal.setText("");
             }

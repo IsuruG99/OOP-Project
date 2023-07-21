@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,6 +17,10 @@ public class AppView extends JFrame {
     private JButton btnDeleteSupplier;
     private JLabel lblHeader;
     private JLabel lblSubtitle;
+    private JButton btnAddEmployees;
+    private JButton btnViewEmployees;
+    private JButton btnRemoveEmployees;
+    private JButton btnAllocateEmployees;
 
     public AppView() {
         setTitle("MyShare Management System");
@@ -29,6 +32,7 @@ public class AppView extends JFrame {
 
         setVisible(true);
 
+        // Customer Order buttons
         btnDisplayOrders.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -50,6 +54,8 @@ public class AppView extends JFrame {
                 addOrderForm.displayForm();
             }
         });
+
+        // Supplier buttons
         btnAddSupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,6 +75,29 @@ public class AppView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 DeleteSupplierForm deleteSupplierForm = new DeleteSupplierForm();
                 deleteSupplierForm.displayDeleteSupplierForm();
+            }
+        });
+
+        // Employee buttons
+        btnAddEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addEmployeeForm addEmployeeForm = new addEmployeeForm();
+                addEmployeeForm.displayAddEmployeeForm();
+            }
+        });
+        btnViewEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                employeeView employeeView = new employeeView();
+                employeeView.loadEmployeeFromController();
+            }
+        });
+        btnRemoveEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteEmployeeForm deleteEmployeeForm = new deleteEmployeeForm();
+                deleteEmployeeForm.displayDeleteEmployeeForm();
             }
         });
     }

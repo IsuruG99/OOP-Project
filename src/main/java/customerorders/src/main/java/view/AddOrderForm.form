@@ -30,18 +30,8 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <labelFor value="a0ce5"/>
+          <labelFor value="8cb0a"/>
           <text value="Type"/>
-        </properties>
-      </component>
-      <component id="ad98e" class="javax.swing.JTextField" binding="txtAddType">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <editable value="true"/>
         </properties>
       </component>
       <component id="8b4a9" class="javax.swing.JTextField" binding="txtAddDate">
@@ -88,6 +78,19 @@
         <properties>
           <labelFor value="91c6c"/>
           <text value="Date"/>
+        </properties>
+      </component>
+      <component id="8cb0a" class="javax.swing.JComboBox" binding="cbAddType">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Web Design"/>
+            <item value="TV Commercial"/>
+            <item value="Social Media Campaign"/>
+            <item value="Print Advertisement"/>
+          </model>
         </properties>
       </component>
     </children>

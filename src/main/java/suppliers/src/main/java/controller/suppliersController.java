@@ -87,13 +87,11 @@ public class suppliersController {
     }
 
     //addSupplier method with parameters to add a new supplier
-    public void addToJSON(int spId, String name, String profession, String contact, String email) {
+    public void addToJSON(String name, String profession, String contact, String email) {
         // read the JSON file and parse suppliers
         List<suppliers> suppliers = readFromJSON();
-        // if spId is not provided, generate a new one
-        if (spId == 0) {
-            spId = suppliers.size() + 1;
-        }
+        // generate a new supplier ID
+        int spId = getLastSupplierId() + 1;
         //if spId is already in use, throw an exception to prevent duplicates
         for (suppliers supplier : suppliers) {
             if (supplier.getSpId() == spId) {
@@ -143,5 +141,17 @@ public class suppliersController {
         }
         saveToJSON(suppliers);
         return 0;
+    }
+
+    // get the highest supplier ID
+    public int getLastSupplierId() {
+        List<suppliers> suppliers = readFromJSON();
+        int spId = 0;
+        for (suppliers supplier : suppliers) {
+            if (supplier.getSpId() > spId) {
+                spId = supplier.getSpId();
+            }
+        }
+        return spId + 1;
     }
 }
