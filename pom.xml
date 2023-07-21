@@ -12,6 +12,7 @@
         <module>src/main/java/customerorders</module>
         <module>src/main/java/suppliers</module>
         <module>src/main/java/myshare</module>
+        <module>src/main/java/employees</module>
 
     </modules>
     <properties>

@@ -16,16 +16,19 @@ public class AppView extends JFrame {
     private JButton btnAddSupplier;
     private JButton btnDisplaySupplier;
     private JButton btnDeleteSupplier;
+    private JLabel lblHeader;
+    private JLabel lblSubtitle;
 
     public AppView() {
-        setTitle("My App");
+        setTitle("MyShare Management System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(375, 300);
+        setSize(500, 400);
 
         // Set the main panel as the content pane
         setContentPane(mainAppPanel);
 
         setVisible(true);
+
         btnDisplayOrders.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

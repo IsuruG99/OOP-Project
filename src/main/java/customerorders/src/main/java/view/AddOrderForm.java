@@ -16,15 +16,12 @@ public class AddOrderForm {
     private JPanel addOrderPane;
     private JLabel lblAddDate;
     private JTextField txtAddDate;
-    private JLabel lblAddStatus;
     private JLabel lblAddCustomerID;
     private JTextField txtAddCustomerID;
     private JLabel lblAddType;
     private JTextField txtAddType;
-    private JTextField txtAddStatus;
     private JLabel lblAddTotal;
     private JTextField txtAddTotal;
-    private JLabel lblAddOrderID;
     private JTextField txtAddOrderID;
     private JButton addOrderButton;
 
@@ -36,7 +33,8 @@ public class AddOrderForm {
         addOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String orderIdStr = txtAddOrderID.getText();
+                // Get the last order ID and increment it by 1
+                String orderIdStr = orderController.getLastOrderId();
                 int orderId = Integer.parseInt(orderIdStr);
 
                 String customerIdStr = txtAddCustomerID.getText();
@@ -54,7 +52,7 @@ public class AddOrderForm {
                     return;
                 }
 
-                String status = txtAddStatus.getText();
+                String status = "Pending";
 
                 String totalAmountStr = txtAddTotal.getText();
                 double totalAmount = Double.parseDouble(totalAmountStr);
@@ -69,11 +67,9 @@ public class AddOrderForm {
                 JOptionPane.showMessageDialog(addOrderPane, "Order added successfully.");
 
                 // Clear the input fields
-                txtAddOrderID.setText("");
                 txtAddCustomerID.setText("");
                 txtAddType.setText("");
                 txtAddDate.setText("");
-                txtAddStatus.setText("");
                 txtAddTotal.setText("");
             }
         });

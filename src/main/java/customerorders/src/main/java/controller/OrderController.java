@@ -16,6 +16,7 @@ import java.util.Locale;
 public class OrderController {
     private static final String JSON_FILE_PATH = System.getProperty("user.dir") + "/data/orders.json";
 
+    // Get all orders from JSON file
     public Object[][] getAllOrders() {
         // Read the JSON file and parse orders
         List<Order> orders = readOrdersFromJson();
@@ -34,6 +35,7 @@ public class OrderController {
         return data;
     }
 
+    // Read orders from JSON file
     private List<Order> readOrdersFromJson() {
         List<Order> orders = new ArrayList<>();
         try {
@@ -102,6 +104,7 @@ public class OrderController {
         return orders;
     }
 
+    // Add order to JSON file
     public void addOrder(int orderId, int customerId, String type, Date date, String status, double totalAmount) {
         List<Order> orders = readOrdersFromJson();
 
@@ -111,6 +114,7 @@ public class OrderController {
         saveOrdersToJson(orders);
     }
 
+    // Save orders to JSON file
     private void saveOrdersToJson(List<Order> orders) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[");
@@ -151,8 +155,20 @@ public class OrderController {
         }
     }
 
+    // Format date to yyyy-MM-dd
     private String formatDate(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         return dateFormat.format(date);
+    }
+
+    // Get the last order ID and increment it by 1
+    public String getLastOrderId() {
+        List<Order> orders = readOrdersFromJson();
+        if (orders.size() > 0) {
+            Order lastOrder = orders.get(orders.size() - 1);
+            return String.valueOf(lastOrder.getOrderId() + 1);
+        } else {
+            return "1";
+        }
     }
 }
