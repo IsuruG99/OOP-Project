@@ -13,7 +13,7 @@ public class addEmployeeForm extends JFrame {
     private JLabel lblAddEmail;
     private JPanel addEmployeePane;
     private JLabel lblAddProfession;
-    private JComboBox cbAddProfession;
+    private     JComboBox cbAddProfession;
     private JTextField txtAddEmail;
     private JButton btnAddEmployee;
 
