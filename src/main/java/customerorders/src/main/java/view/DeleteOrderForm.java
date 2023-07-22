@@ -23,6 +23,8 @@ public class DeleteOrderForm {
     private JButton removeOrderButton;
     private JPanel removeOrderPane;
     private JComboBox cbDeleteID;
+    private JTextField txtDeleteEmail;
+    private JLabel lblDeleteEmail;
 
     private OrderController orderController;
 
@@ -32,23 +34,21 @@ public class DeleteOrderForm {
         // Populate the combo box with order IDs
         populateFields();
 
-        removeOrderButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // ask for confirmation before deleting order
-                int check = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this order?", "Warning", JOptionPane.YES_NO_OPTION);
-                if (check == JOptionPane.NO_OPTION) {
-                    return;
-                }
-                int orderId = Integer.parseInt(txtDeleteID.getText());
-
-                // Delete the order using the order controller
-                orderController.deleteOrder(orderId);
-
-                // Display success message
-                JOptionPane.showMessageDialog(removeOrderPane, "Order deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                System.exit(0);
+        removeOrderButton.addActionListener(e -> {
+            // ask for confirmation before deleting order
+            int check = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this order?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (check == JOptionPane.NO_OPTION) {
+                return;
             }
+            int orderId = Integer.parseInt(cbDeleteID.getSelectedItem().toString());
+
+            // Delete the order using the order controller
+            orderController.deleteOrder(orderId);
+
+            // Display success message
+            JOptionPane.showMessageDialog(removeOrderPane, "Order deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(removeOrderPane);
+            frame.dispose();
         });
     }
 
@@ -61,10 +61,11 @@ public class DeleteOrderForm {
         // set the first order ID as default
         cbDeleteID.setSelectedIndex(0);
         txtDeleteCustomerID.setText(data[0][1].toString());
-        txtDeleteType.setText(data[0][2].toString());
-        txtDeleteDate.setText(data[0][3].toString());
-        txtDeleteStatus.setText(data[0][4].toString());
-        txtDeleteTotal.setText(data[0][5].toString());
+        txtDeleteEmail.setText(data[0][2].toString());
+        txtDeleteType.setText(data[0][3].toString());
+        txtDeleteDate.setText(data[0][4].toString());
+        txtDeleteStatus.setText(data[0][5].toString());
+        txtDeleteTotal.setText(data[0][6].toString());
 
         // action listener for combo box
         cbDeleteID.addActionListener(e -> {
@@ -72,22 +73,19 @@ public class DeleteOrderForm {
             for (Object[] datum : data) {
                 if (datum[0].toString().equals(orderIdStr)) {
                     txtDeleteCustomerID.setText(datum[1].toString());
-                    txtDeleteType.setText(datum[2].toString());
-                    txtDeleteDate.setText(datum[3].toString());
-                    txtDeleteStatus.setText(datum[4].toString());
-                    txtDeleteTotal.setText(datum[5].toString());
+                    txtDeleteEmail.setText(datum[2].toString());
+                    txtDeleteType.setText(datum[3].toString());
+                    txtDeleteDate.setText(datum[4].toString());
+                    txtDeleteStatus.setText(datum[5].toString());
+                    txtDeleteTotal.setText(datum[6].toString());
                 }
             }
         });
     }
 
-    public JPanel getRemoveOrderPane() {
-        return removeOrderPane;
-    }
-
     public void displayForm() {
         JFrame frame = new JFrame("Delete Order Form");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setContentPane(removeOrderPane);
         frame.setPreferredSize(new Dimension(300, 500));

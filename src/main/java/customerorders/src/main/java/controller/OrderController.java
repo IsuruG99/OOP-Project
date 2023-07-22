@@ -22,15 +22,16 @@ public class OrderController {
         List<Order> orders = readOrdersFromJson();
 
         // Prepare the data for the table
-        Object[][] data = new Object[orders.size()][6];
+        Object[][] data = new Object[orders.size()][7];
         for (int i = 0; i < orders.size(); i++) {
             Order order = orders.get(i);
             data[i][0] = order.getOrderId();
             data[i][1] = order.getCustomerId();
-            data[i][2] = order.getType();
-            data[i][3] = formatDate(order.getDate());
-            data[i][4] = order.getStatus();
-            data[i][5] = order.getTotalAmount();
+            data[i][2] = order.getEmail();
+            data[i][3] = order.getType();
+            data[i][4] = formatDate(order.getDate());
+            data[i][5] = order.getStatus();
+            data[i][6] = order.getTotalAmount();
         }
         return data;
     }
@@ -48,6 +49,7 @@ public class OrderController {
 
                     int orderId = 0;
                     int customerId = 0;
+                    String email = "";
                     String type = "";
                     Date date = new Date();
                     String status = "";
@@ -67,6 +69,7 @@ public class OrderController {
                                 switch (key) { // Extract values for each key
                                     case "\"orderId\"" -> orderId = Integer.parseInt(value);
                                     case "\"customerId\"" -> customerId = Integer.parseInt(value);
+                                    case "\"email\"" -> email = value.replaceAll("\"", "");
                                     case "\"type\"" -> type = value.replaceAll("\"", "");
                                     case "\"date\"" -> {
                                         value = value.replaceAll("\"", "");
@@ -93,7 +96,7 @@ public class OrderController {
                         }
                     }
                     if (validOrder && orderId != 0 && customerId != 0) { // Validity Check & Positive ID Check
-                        Order order = new Order(orderId, customerId, type, date, status, totalAmount);
+                        Order order = new Order(orderId, customerId, email, type, date, status, totalAmount);
                         orders.add(order);
                     }
                 }
@@ -105,10 +108,10 @@ public class OrderController {
     }
 
     // Add order to JSON file
-    public void addOrder(int orderId, int customerId, String type, Date date, String status, double totalAmount) {
+    public void addOrder(int orderId, int customerId, String email, String type, Date date, String status, double totalAmount) {
         List<Order> orders = readOrdersFromJson();
 
-        Order order = new Order(orderId, customerId, type, date, status, totalAmount);
+        Order order = new Order(orderId, customerId, email, type, date, status, totalAmount);
         orders.add(order);
 
         saveOrdersToJson(orders);

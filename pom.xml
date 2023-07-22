@@ -13,6 +13,7 @@
         <module>src/main/java/suppliers</module>
         <module>src/main/java/myshare</module>
         <module>src/main/java/employees</module>
+        <module>src/main/java/inventory</module>
 
     </modules>
     <properties>
