@@ -43,6 +43,7 @@ public class AddSupplierForm extends JFrame {
         JFrame frame = new JFrame("Add Supplier");
         frame.setContentPane(new AddSupplierForm().addSupplierPane);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
     }

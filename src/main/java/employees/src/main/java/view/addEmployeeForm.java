@@ -13,7 +13,7 @@ public class addEmployeeForm extends JFrame {
     private JLabel lblAddEmail;
     private JPanel addEmployeePane;
     private JLabel lblAddProfession;
-    private     JComboBox cbAddProfession;
+    private JComboBox cbAddProfession;
     private JTextField txtAddEmail;
     private JButton btnAddEmployee;
 
@@ -24,8 +24,18 @@ public class addEmployeeForm extends JFrame {
             String profession = Objects.requireNonNull(cbAddProfession.getSelectedItem()).toString();
             String contactNumber = txtAddContact.getText();
             String email = txtAddEmail.getText();
-            employeeController.addToJSON(name, profession, contactNumber, email, "Available");
-            JOptionPane.showMessageDialog(addEmployeePane, "Employee added successfully.");
+            // check if any field is empty
+            if (name.isEmpty() || profession.isEmpty() || contactNumber.isEmpty() || email.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            else {
+                employeeController.addToJSON(name, profession, contactNumber, email, "Available");
+                JOptionPane.showMessageDialog(null, "Added employee successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                txtAddName.setText("");
+                txtAddContact.setText("");
+                txtAddEmail.setText("");
+            }
         });
     }
 
@@ -34,6 +44,7 @@ public class addEmployeeForm extends JFrame {
         JFrame frame = new JFrame("Add Employee");
         frame.setContentPane(new addEmployeeForm().addEmployeePane);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
     }

@@ -86,6 +86,7 @@ public class AddOrderForm {
 
         frame.setContentPane(addOrderPane);
         frame.setPreferredSize(new Dimension(300, 500));
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
     }

@@ -125,6 +125,8 @@ public class employeeController {
         }
     }
 
+
+
     // Delete employee from JSON file
     public void deleteFromJSON(int empId) {
         // read the JSON file and parse employees
