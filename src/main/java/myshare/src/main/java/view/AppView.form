@@ -1,39 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.AppView">
-  <grid id="27dc6" binding="mainAppPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="mainAppPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="586" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <tabbedpane id="72aa3" binding="mainPane">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="0" column="0" row-span="2" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="200"/>
           </grid>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="24735" binding="orderPane" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="76a16" binding="homePane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
             <constraints>
-              <tabbedpane title="Customer Orders"/>
+              <tabbedpane title="Home"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
-              <component id="92f5b" class="javax.swing.JButton" binding="btnAddOrder">
+              <component id="40a22" class="javax.swing.JLabel" binding="lblHeader">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+<<<<<<< HEAD
                   <background color="-12514300"/>
                   <text value="Place Order"/>
+=======
+                  <font size="36"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Welcome!"/>
+>>>>>>> upstream/main
                 </properties>
               </component>
+              <component id="70e57" class="javax.swing.JLabel" binding="lblSubtitle">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="18"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="MyShare Management Application"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="24735" binding="orderPane" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
+            <constraints>
+              <tabbedpane title="Orders"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
               <component id="ee676" class="javax.swing.JButton" binding="btnDisplayOrders">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -50,12 +78,132 @@
                   <text value="Remove Order"/>
                 </properties>
               </component>
+              <component id="ad2a6" class="javax.swing.JButton" binding="btnAddOrder">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Place Order"/>
+                </properties>
+              </component>
             </children>
           </grid>
-          <grid id="5d2fd" binding="inventoryPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="5d2fd" binding="supplierPane" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
+            <constraints>
+              <tabbedpane title="Suppliers"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="2fb9a" class="javax.swing.JButton" binding="btnAddSupplier">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Add Supplier"/>
+                </properties>
+              </component>
+              <component id="e8c04" class="javax.swing.JButton" binding="btnDisplaySupplier">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="View Suppliers"/>
+                </properties>
+              </component>
+              <component id="687b1" class="javax.swing.JButton" binding="btnDeleteSupplier">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Remove Supplier"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="87734" binding="inventoryPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
             <constraints>
               <tabbedpane title="Inventory"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="621ab" class="javax.swing.JButton" binding="btnViewInventory">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="View Inventory"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="f43" binding="employeePane" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
+            <constraints>
+              <tabbedpane title="Employees"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="7e1b7" class="javax.swing.JButton" binding="btnAddEmployees">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Add Employees"/>
+                </properties>
+              </component>
+              <component id="9c8cc" class="javax.swing.JButton" binding="btnViewEmployees">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="View Employees"/>
+                </properties>
+              </component>
+              <component id="87e9" class="javax.swing.JButton" binding="btnRemoveEmployees">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Remove Employees"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="b7e1f" binding="allocationPane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Allocation"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="9dab7" class="javax.swing.JButton" binding="btnDeallocateEmployees">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Deallocate Employees"/>
+                </properties>
+              </component>
+              <component id="ee551" class="javax.swing.JButton" binding="btnAllocateEmployees">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Allocate Employees"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="19d30" binding="notifiyPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
+            <constraints>
+              <tabbedpane title="Notifications"/>
             </constraints>
             <properties/>
             <border type="none"/>

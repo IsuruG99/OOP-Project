@@ -7,14 +7,16 @@ import java.util.Locale;
 public class Order {
     private int orderId;
     private int customerId;
+    private String email;
     private String type;
     private Date date;
     private String status;
     private double totalAmount;
 
-    public Order(int orderId, int customerId, String type, Date date, String status, double totalAmount) {
+    public Order(int orderId, int customerId, String email,String type, Date date, String status, double totalAmount) {
         this.orderId = orderId;
         this.customerId = customerId;
+        this.email = email;
         this.type = type;
         this.date = date;
         this.status = status;
@@ -38,6 +40,14 @@ public class Order {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
+
+    public String getEmail() {
+            return email;
+        }
+
+    public void setEmail(String email) {
+            this.email = email;
+        }
 
     public String getType() {
         return type;
@@ -69,21 +79,5 @@ public class Order {
 
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
-    }
-
-    public String toJson() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        String dateString = dateFormat.format(date);
-
-        StringBuilder jsonBuilder = new StringBuilder();
-        jsonBuilder.append("{");
-        jsonBuilder.append("\"orderId\":").append(orderId).append(",");
-        jsonBuilder.append("\"customerId\":").append(customerId).append(",");
-        jsonBuilder.append("\"type\":\"").append(type).append("\",");
-        jsonBuilder.append("\"date\":\"").append(dateString).append("\",");
-        jsonBuilder.append("\"status\":\"").append(status).append("\",");
-        jsonBuilder.append("\"totalAmount\":").append(totalAmount);
-        jsonBuilder.append("}");
-        return jsonBuilder.toString();
     }
 }

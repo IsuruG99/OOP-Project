@@ -13,7 +13,10 @@
         <module>src/main/java/suppliers</module>
         <module>src/main/java/myshare</module>
         <module>newordenotify</module>
-
+        <module>src/main/java/employees</module>
+        <module>src/main/java/inventory</module>
+        <module>src/main/java/allocation</module>
+        <module>src/main/java/report</module>
     </modules>
     <properties>
         <maven.compiler.source>20</maven.compiler.source>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.DeleteOrderForm">
-  <grid id="27dc6" binding="removeOrderPane" layout-manager="GridLayoutManager" row-count="13" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="removeOrderPane" layout-manager="GridLayoutManager" row-count="15" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
       <xy x="20" y="20" width="500" height="699"/>
     </constraints>
@@ -13,17 +13,9 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <labelFor value="1f053"/>
+          <labelFor value="345f7"/>
           <text value="Order ID"/>
         </properties>
-      </component>
-      <component id="b9b4d" class="javax.swing.JTextField" binding="txtDeleteID">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
       </component>
       <component id="16174" class="javax.swing.JLabel" binding="lblDeleteCustomerID">
         <constraints>
@@ -46,7 +38,7 @@
       </component>
       <component id="fef5c" class="javax.swing.JLabel" binding="lblDeleteType">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <labelFor value="3098d"/>
@@ -54,25 +46,6 @@
         </properties>
       </component>
       <component id="5ae8e" class="javax.swing.JTextField" binding="txtDeleteType">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <editable value="false"/>
-        </properties>
-      </component>
-      <component id="ddedb" class="javax.swing.JLabel" binding="lblDeleteDate">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <labelFor value="8e9a"/>
-          <text value="Date"/>
-        </properties>
-      </component>
-      <component id="5e128" class="javax.swing.JTextField" binding="txtDeleteDate">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -82,16 +55,16 @@
           <editable value="false"/>
         </properties>
       </component>
-      <component id="4a5a4" class="javax.swing.JLabel" binding="lblDeleteStatus">
+      <component id="ddedb" class="javax.swing.JLabel" binding="lblDeleteDate">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <labelFor value="4826a"/>
-          <text value="Status"/>
+          <labelFor value="8e9a"/>
+          <text value="Date"/>
         </properties>
       </component>
-      <component id="bdc0d" class="javax.swing.JTextField" binding="txtDeleteStatus">
+      <component id="5e128" class="javax.swing.JTextField" binding="txtDeleteDate">
         <constraints>
           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -101,15 +74,16 @@
           <editable value="false"/>
         </properties>
       </component>
-      <component id="dcc11" class="javax.swing.JLabel" binding="lblDeleteTotal">
+      <component id="4a5a4" class="javax.swing.JLabel" binding="lblDeleteStatus">
         <constraints>
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Total Amount"/>
+          <labelFor value="4826a"/>
+          <text value="Status"/>
         </properties>
       </component>
-      <component id="6a0ce" class="javax.swing.JTextField" binding="txtDeleteTotal">
+      <component id="bdc0d" class="javax.swing.JTextField" binding="txtDeleteStatus">
         <constraints>
           <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -119,12 +93,55 @@
           <editable value="false"/>
         </properties>
       </component>
+      <component id="dcc11" class="javax.swing.JLabel" binding="lblDeleteTotal">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Total Amount"/>
+        </properties>
+      </component>
+      <component id="6a0ce" class="javax.swing.JTextField" binding="txtDeleteTotal">
+        <constraints>
+          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
       <component id="32b37" class="javax.swing.JButton" binding="removeOrderButton">
         <constraints>
-          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Remove Order"/>
+        </properties>
+      </component>
+      <component id="345f7" class="javax.swing.JComboBox" binding="cbDeleteID">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="c036e" class="javax.swing.JLabel" binding="lblDeleteEmail">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="2b308"/>
+          <text value="Customer Email"/>
+        </properties>
+      </component>
+      <component id="2b308" class="javax.swing.JTextField" binding="txtDeleteEmail">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
         </properties>
       </component>
     </children>

@@ -7,65 +7,72 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-public class NewordernotifyController {
-    private static final String JSON_FILE_PATH = System.getProperty("user.dir") + "/data/employees.json";
 
-    //method to get only empid and email
-    public Object[][] getEmpIdAndEmail() {
-        // read the JSON file and parse employees
+public class NewordernotifyController {
+    private static final String JSON_FILE_PATH = "C:/Users/KEMMA GRAPHIC/Desktop/OOP Project/OOP-Project/OOP-Project/data/employees.json";
+
+
+    // Method to get only empid and email
+    public Object[][] getFromJSON() {
+        // Read the JSON file and parse employees
         List<Newordernotify> ordernotify = readFromJSON();
-        // prepare the data for the table
-        Object[][] data = new Object[ordernotify.size()][2];
+
+        // Prepare the data for the table
+        Object[][] data = new Object[ordernotify.size()][3];
         for (int i = 0; i < ordernotify.size(); i++) {
-            Newordernotify Nordernotify = ordernotify.get(i);
-            data[i][0] = Nordernotify.getEmpId();
-            data[i][1] = Nordernotify.getEmail();
+            Newordernotify a = ordernotify.get(i);
+            data[i][0] = a.getEmpId();
+            data[i][1] = a.getProfession();
+            data[i][2] = a.getEmail();
         }
         return data;
+    }
 
-}
-
-    private List<Newordernotify> readfromJSON(){
+    private List<Newordernotify> readFromJSON() {
         List<Newordernotify> ordernotify = new ArrayList<>();
         try {
             String json = new String(Files.readAllBytes(Paths.get(JSON_FILE_PATH)));
-            json = json.replace("[", "").replace("]", ""); // Remove square brackets from the JSON string
-            String[] employeeJsonArray = json.split("\\{"); // Split the JSON string by curly braces to separate individual employee objects
+
+            // Extract individual employee objects without square brackets
+            String[] employeeJsonArray = json.substring(1, json.length() - 1).split("\\{");
+
             for (String employeeJson : employeeJsonArray) {
                 if (!employeeJson.isEmpty()) {
-                    String[] keyValuePairs = employeeJson.split(","); // Split the employeeJson by commas
+                    String[] keyValuePairs = employeeJson.split(",");
+
                     int empId = 0;
                     String profession = "";
                     String email = "";
-                    boolean validEmployee = false; // Flag to check if the employee is valid
-                    if (keyValuePairs.length > 0) { // Skip the first empty element
-                        int startIndex = 0;
-                        if (keyValuePairs[0].trim().isEmpty()) {
-                            startIndex = 1;
-                        }
-                        for (int i = startIndex; i < keyValuePairs.length; i++) {
-                            String[] keyValue = keyValuePairs[i].split(":"); // Split each key-value pair by colon
-                            if (keyValue.length == 2) {
-                                String key = keyValue[0].trim().replace("\"", ""); // Remove quotes from the key
-                                String value = keyValue[1].trim().replace("\"", ""); // Remove quotes from the value
-                                switch (key) {
-                                    case "empId" -> empId = Integer.parseInt(value);
-                                    case "profession" -> profession = value;
-                                    case "email" -> {
-                                        value = value.replace("{", "").replace("}", "").trim();
-                                        email = value;
-                                    }
-                                }
+
+                    for (String keyValue : keyValuePairs) {
+                        String[] keyValueEntry = keyValue.split(":");
+
+                        if (keyValueEntry.length == 2) {
+                            String key = keyValueEntry[0].trim().replace("\"", "");
+                            String value = keyValueEntry[1].trim().replace("\"", "");
+
+                            switch (key) {
+                                case "empId":
+                                    empId = Integer.parseInt(value);
+                                    break;
+                                case "profession":
+                                    profession = value;
+                                    break;
+                                case "email":
+                                    email = value.replace("{", "").replace("}", "").trim();
+                                    break;
                             }
                         }
                     }
+
                     // Add the employee to the list if it is valid
-                    Newordernotify a = new Newordernotify(empId, profession, email);
-                    ordernotify.add(a);
+                    Newordernotify employee = new Newordernotify(empId, profession, email);
+                    ordernotify.add(employee);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return ordernotify;
+    }
 }

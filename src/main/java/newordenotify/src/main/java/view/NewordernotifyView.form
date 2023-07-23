@@ -16,7 +16,7 @@
           <text value=" Employees "/>
         </properties>
       </component>
-      <component id="9931b" class="javax.swing.JComboBox" binding="Empselect">
+      <component id="9931b" class="javax.swing.JComboBox" binding="profession">
         <constraints>
           <grid row="0" column="1" row-span="4" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

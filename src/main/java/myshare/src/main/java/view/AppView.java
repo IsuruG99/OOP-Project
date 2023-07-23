@@ -1,70 +1,48 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AppView extends JFrame {
     private JTabbedPane mainPane;
     private JPanel orderPane;
-    private JPanel inventoryPane;
+    private JPanel supplierPane;
     private JPanel mainAppPanel;
     private JButton btnAddOrder;
     private JButton btnDisplayOrders;
     private JButton btnRemoveOrder;
+    private JButton btnAddSupplier;
+    private JButton btnDisplaySupplier;
+    private JButton btnDeleteSupplier;
+    private JLabel lblHeader;
+    private JLabel lblSubtitle;
+    private JButton btnAddEmployees;
+    private JButton btnViewEmployees;
+    private JButton btnRemoveEmployees;
+    private JButton btnDeallocateEmployees;
+    private JButton btnViewInventory;
+    private JPanel inventoryPane;
+    private JPanel employeePane;
+    private JPanel notifiyPane;
+    private JPanel homePane;
+    private JPanel allocationPane;
+    private JButton btnAllocateEmployees;
 
     public AppView() {
-        setTitle("My App");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(375, 300);
-
-        // Create the main panel
-        mainAppPanel = new JPanel();
-        mainAppPanel.setLayout(new BorderLayout());
-
-        // Create the tabbed pane
-        mainPane = new JTabbedPane();
-
-        // Create the order pane
-        orderPane = new JPanel();
-        orderPane.setLayout(null); // Set layout to null for absolute positioning
-
-        // Create the buttons
-        btnAddOrder = new JButton("Add Order");
-        btnDisplayOrders = new JButton("Display Orders");
-        btnRemoveOrder = new JButton("Remove Order");
-
-        // Set the positions of the buttons within the order pane
-        btnAddOrder.setBounds(100, 50, 150, 30);
-        btnDisplayOrders.setBounds(100, 100, 150, 30);
-        btnRemoveOrder.setBounds(100, 150, 150, 30);
-
-        // Add the buttons to the order pane
-        orderPane.add(btnAddOrder);
-        orderPane.add(btnDisplayOrders);
-        orderPane.add(btnRemoveOrder);
-
-        // Add the order pane to the main pane
-        mainPane.add("Order", orderPane);
-
-        // Create the inventory pane
-        inventoryPane = new JPanel();
-        // Add the inventory pane to the main pane
-        mainPane.add("Inventory", inventoryPane);
-
-        // Add the main pane to the main panel
-        mainAppPanel.add(mainPane, BorderLayout.CENTER);
-
+        setTitle("MyShare Management System");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(600, 600);
+        setLocationRelativeTo(null);
         // Set the main panel as the content pane
         setContentPane(mainAppPanel);
-
         setVisible(true);
+
+        // Customer Order buttons
         btnDisplayOrders.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                OrderView orderView = new OrderView();
-                orderView.loadOrdersFromController();
+                new OrderView();
             }
         });
         btnRemoveOrder.addActionListener(new ActionListener() {
@@ -81,7 +59,77 @@ public class AppView extends JFrame {
                 addOrderForm.displayForm();
             }
         });
+
+        // Supplier buttons
+        btnAddSupplier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddSupplierForm addSupplierForm = new AddSupplierForm();
+                addSupplierForm.displayAddSupplierForm();
+            }
+        });
+        btnDisplaySupplier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new suppliersView();
+            }
+        });
+        btnDeleteSupplier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DeleteSupplierForm deleteSupplierForm = new DeleteSupplierForm();
+                deleteSupplierForm.displayDeleteSupplierForm();
+            }
+        });
+
+        // Employee buttons
+        btnAddEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addEmployeeForm addEmployeeForm = new addEmployeeForm();
+                addEmployeeForm.displayAddEmployeeForm();
+            }
+        });
+        btnViewEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                employeeView employeeView = new employeeView();
+                employeeView.loadEmployeeFromController();
+            }
+        });
+        btnRemoveEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteEmployeeForm deleteEmployeeForm = new deleteEmployeeForm();
+                deleteEmployeeForm.displayDeleteEmployeeForm();
+            }
+        });
+
+        // Inventory buttons
+        btnViewInventory.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new inventoryView();
+            }
+        });
+
+        // Allocation buttons
+        btnAllocateEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new allocationView();
+            }
+        });
+        btnDeallocateEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new deallocationView();
+            }
+        });
     }
+
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

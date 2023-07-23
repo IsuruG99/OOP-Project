@@ -1,0 +1,22 @@
+[
+  {
+    "itemID": "1",
+    "name": "Digital Images",
+    "price": "16250"
+  },
+  {
+    "itemID": "2",
+    "name": "Stock Videos",
+    "price": "32000"
+  },
+  {
+    "itemID": "3",
+    "name": "Marketing Templates",
+    "price": "9500"
+  },
+  {
+    "itemID": "4",
+    "name": "Graphic Templates",
+    "price": "6500"
+  }
+]
