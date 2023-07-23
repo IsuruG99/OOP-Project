@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.finalizeOrderForm">
+  <grid id="27dc6" binding="finalizePane" layout-manager="GridLayoutManager" row-count="15" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="50" left="50" bottom="50" right="50"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="901"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="eb074" class="javax.swing.JLabel" binding="lblCompleteOrderID">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="34248"/>
+          <text value="Order ID"/>
+        </properties>
+      </component>
+      <component id="34248" class="javax.swing.JComboBox" binding="cbCompleteOrderID">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="60e1d" class="javax.swing.JLabel" binding="lblCompleteCustomerID">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="3f816"/>
+          <text value="Customer ID"/>
+        </properties>
+      </component>
+      <component id="3f816" class="javax.swing.JTextField" binding="txtCompleteCustomerID">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="3253f" class="javax.swing.JLabel" binding="lblCompleteEmail">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="a18de"/>
+          <text value="Customer Email"/>
+        </properties>
+      </component>
+      <component id="a18de" class="javax.swing.JTextField" binding="txtCompleteEmail">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="55505" class="javax.swing.JLabel" binding="lblCompleteType">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="b02c8"/>
+          <text value="Type"/>
+        </properties>
+      </component>
+      <component id="a99a6" class="javax.swing.JTextField" binding="txtCompleteType">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="ceb5e" class="javax.swing.JLabel" binding="lblCompleteDate">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="77ca2"/>
+          <text value="Date"/>
+        </properties>
+      </component>
+      <component id="77ca2" class="javax.swing.JTextField" binding="txtCompleteDate">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="1f633" class="javax.swing.JLabel" binding="lblCompleteStatus">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="229c4"/>
+          <text value="Status"/>
+        </properties>
+      </component>
+      <component id="229c4" class="javax.swing.JTextField" binding="txtCompleteStatus">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="e286d" class="javax.swing.JLabel" binding="lblCompleteTotal">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="44fca"/>
+          <text value="Total Amount"/>
+        </properties>
+      </component>
+      <component id="44fca" class="javax.swing.JTextField" binding="txtCompleteTotal">
+        <constraints>
+          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="37245" class="javax.swing.JButton" binding="btnFinalizeOrder">
+        <constraints>
+          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Finalize and Notify"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -22,15 +22,16 @@ public class OrderController {
         List<Order> orders = readOrdersFromJson();
 
         // Prepare the data for the table
-        Object[][] data = new Object[orders.size()][6];
+        Object[][] data = new Object[orders.size()][7];
         for (int i = 0; i < orders.size(); i++) {
             Order order = orders.get(i);
             data[i][0] = order.getOrderId();
             data[i][1] = order.getCustomerId();
-            data[i][2] = order.getType();
-            data[i][3] = formatDate(order.getDate());
-            data[i][4] = order.getStatus();
-            data[i][5] = order.getTotalAmount();
+            data[i][2] = order.getEmail();
+            data[i][3] = order.getType();
+            data[i][4] = formatDate(order.getDate());
+            data[i][5] = order.getStatus();
+            data[i][6] = order.getTotalAmount();
         }
         return data;
     }
@@ -48,6 +49,7 @@ public class OrderController {
 
                     int orderId = 0;
                     int customerId = 0;
+                    String email = "";
                     String type = "";
                     Date date = new Date();
                     String status = "";
@@ -67,6 +69,7 @@ public class OrderController {
                                 switch (key) { // Extract values for each key
                                     case "\"orderId\"" -> orderId = Integer.parseInt(value);
                                     case "\"customerId\"" -> customerId = Integer.parseInt(value);
+                                    case "\"email\"" -> email = value.replaceAll("\"", "");
                                     case "\"type\"" -> type = value.replaceAll("\"", "");
                                     case "\"date\"" -> {
                                         value = value.replaceAll("\"", "");
@@ -93,7 +96,7 @@ public class OrderController {
                         }
                     }
                     if (validOrder && orderId != 0 && customerId != 0) { // Validity Check & Positive ID Check
-                        Order order = new Order(orderId, customerId, type, date, status, totalAmount);
+                        Order order = new Order(orderId, customerId, email, type, date, status, totalAmount);
                         orders.add(order);
                     }
                 }
@@ -105,11 +108,9 @@ public class OrderController {
     }
 
     // Add order to JSON file
-    public void addOrder(int orderId, int customerId, String type, Date date, String status, double totalAmount) {
+    public void addOrder(int orderId, int customerId, String email, String type, Date date, String status, double totalAmount) {
         List<Order> orders = readOrdersFromJson();
-
-        Order order = new Order(orderId, customerId, type, date, status, totalAmount);
-        orders.add(order);
+        orders.add(new Order(orderId, customerId, email, type, date, status, totalAmount));
 
         saveOrdersToJson(orders);
     }
@@ -120,15 +121,25 @@ public class OrderController {
         jsonBuilder.append("[");
         for (int i = 0; i < orders.size(); i++) {
             Order order = orders.get(i);
-            jsonBuilder.append(order.toJson());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            String dateString = dateFormat.format(order.getDate());
+            jsonBuilder.append("{");
+            jsonBuilder.append("\"orderId\":").append(order.getOrderId()).append(",");
+            jsonBuilder.append("\"customerId\":").append(order.getCustomerId()).append(",");
+            jsonBuilder.append("\"email\":\"").append(order.getEmail()).append("\",");
+            jsonBuilder.append("\"type\":\"").append(order.getType()).append("\",");
+            jsonBuilder.append("\"date\":\"").append(dateString).append("\",");
+            jsonBuilder.append("\"status\":\"").append(order.getStatus()).append("\",");
+            jsonBuilder.append("\"totalAmount\":").append(order.getTotalAmount());
+            jsonBuilder.append("}");
             if (i < orders.size() - 1) {
                 jsonBuilder.append(",");
             }
         }
-        jsonBuilder.append("]");
 
-        try (FileWriter fileWriter = new FileWriter(JSON_FILE_PATH)) {
-            fileWriter.write(jsonBuilder.toString());
+        jsonBuilder.append("]");
+        try {
+            Files.write(Paths.get(JSON_FILE_PATH), jsonBuilder.toString().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -137,22 +148,15 @@ public class OrderController {
     public void deleteOrder(int orderId) {
         List<Order> orders = readOrdersFromJson();
 
-        // Find the order with the given orderId and remove it from the list
-        Order orderToDelete = null;
-        for (Order order : orders) {
+        // Find the order with the given orderId and remove it
+        for (int i = 0; i < orders.size(); i++) {
+            Order order = orders.get(i);
             if (order.getOrderId() == orderId) {
-                orderToDelete = order;
+                orders.remove(i);
                 break;
             }
         }
-
-        if (orderToDelete != null) {
-            orders.remove(orderToDelete);
-            saveOrdersToJson(orders);
-            System.out.println("Order deleted successfully.");
-        } else {
-            System.out.println("Order not found.");
-        }
+        saveOrdersToJson(orders);
     }
 
     // Format date to yyyy-MM-dd
@@ -170,5 +174,51 @@ public class OrderController {
         } else {
             return "1";
         }
+    }
+
+    // Update order status for Allocation
+    public void updateOrderStatus(int orderID, String status) {
+        List<Order> orders = readOrdersFromJson();
+
+        // Find the order with the given orderId and update its status
+        for (Order order : orders) {
+            if (order.getOrderId() == orderID) {
+                order.setStatus(status);
+                break;
+            }
+        }
+        saveOrdersToJson(orders);
+    }
+
+    public void completeOrder(int orderId) {
+        List<Order> orders = readOrdersFromJson();
+        // Find the order with the given orderId and update its status
+        for (Order order : orders) {
+            if (order.getOrderId() == orderId) {
+                order.setStatus("Completed");
+                break;
+            }
+        }
+        saveOrdersToJson(orders);
+    }
+
+    public String finalizeOrder(int orderId) {
+        List<Order> orders = readOrdersFromJson();
+        // Find the order with the given orderId and update its status
+        String message = null;
+        for (Order order : orders) {
+            if (order.getOrderId() == orderId) {
+                // Send email to customer
+                String email = order.getEmail();
+                String subject = "Your MyShare Order is Ready";
+                String body = "Dear Customer, Your order has been finalized and is ready to be collected. Please contact us for more details.";
+                // there is no email service, so we will just print the email in a dialog box
+                message = "Email sent to " + email + "\nSubject: " + subject + "\nBody: " + body;
+                order.setStatus("Completed");
+                break;
+            }
+        }
+        saveOrdersToJson(orders);
+        return message;
     }
 }

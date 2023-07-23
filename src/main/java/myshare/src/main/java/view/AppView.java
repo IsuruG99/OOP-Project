@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class AppView extends JFrame {
     private JTabbedPane mainPane;
     private JPanel orderPane;
-    private JPanel inventoryPane;
+    private JPanel supplierPane;
     private JPanel mainAppPanel;
     private JButton btnAddOrder;
     private JButton btnDisplayOrders;
@@ -20,38 +20,43 @@ public class AppView extends JFrame {
     private JButton btnAddEmployees;
     private JButton btnViewEmployees;
     private JButton btnRemoveEmployees;
+    private JButton btnDeallocateEmployees;
+    private JButton btnViewInventory;
+    private JPanel inventoryPane;
+    private JPanel employeePane;
+    private JPanel notifiyPane;
+    private JPanel homePane;
+    private JPanel allocationPane;
     private JButton btnAllocateEmployees;
+    private JButton btnCompleteAssignment;
+    private JButton btnFinalize;
 
     public AppView() {
         setTitle("MyShare Management System");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
-
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(600, 600);
+        setLocationRelativeTo(null);
         // Set the main panel as the content pane
         setContentPane(mainAppPanel);
-
         setVisible(true);
 
         // Customer Order buttons
         btnDisplayOrders.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                OrderView orderView = new OrderView();
-                orderView.loadOrdersFromController();
+                new OrderView();
             }
         });
         btnRemoveOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DeleteOrderForm deleteOrderForm = new DeleteOrderForm();
-                deleteOrderForm.displayForm();
+                new DeleteOrderForm();
             }
         });
         btnAddOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddOrderForm addOrderForm = new AddOrderForm();
-                addOrderForm.displayForm();
+                new AddOrderForm();
             }
         });
 
@@ -59,22 +64,19 @@ public class AppView extends JFrame {
         btnAddSupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddSupplierForm addSupplierForm = new AddSupplierForm();
-                addSupplierForm.displayAddSupplierForm();
+                new addSupplierForm();
             }
         });
         btnDisplaySupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                suppliersView supplierView = new suppliersView();
-                supplierView.loadSuppliersFromController();
+                new suppliersView();
             }
         });
         btnDeleteSupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DeleteSupplierForm deleteSupplierForm = new DeleteSupplierForm();
-                deleteSupplierForm.displayDeleteSupplierForm();
+                new deleteSupplierForm();
             }
         });
 
@@ -82,29 +84,60 @@ public class AppView extends JFrame {
         btnAddEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addEmployeeForm addEmployeeForm = new addEmployeeForm();
-                addEmployeeForm.displayAddEmployeeForm();
+                new addEmployeeForm();
             }
         });
         btnViewEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                employeeView employeeView = new employeeView();
-                employeeView.loadEmployeeFromController();
+                new employeeView();
             }
         });
         btnRemoveEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteEmployeeForm deleteEmployeeForm = new deleteEmployeeForm();
-                deleteEmployeeForm.displayDeleteEmployeeForm();
+                new deleteEmployeeForm();
+            }
+        });
+
+        // Inventory buttons
+        btnViewInventory.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new inventoryView();
+            }
+        });
+
+        // Allocation buttons
+        btnAllocateEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new allocationView();
+            }
+        });
+        btnDeallocateEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new cancelAllocationForm();
+            }
+        });
+        btnCompleteAssignment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new completeAllocationForm();
+            }
+        });
+
+        btnFinalize.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new finalizeOrderForm();
             }
         });
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            AppView appView = new AppView();
-        });
+    public static void main(String[] args)
+    {
+        new AppView();
     }
 }
