@@ -48,7 +48,7 @@ public class AddOrderForm {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     date = dateFormat.parse(dateString);
                 } catch (ParseException ex) {
-                    JOptionPane.showMessageDialog(addOrderPane, "Invalid date format. Please use yyyy-MM-dd.");
+                    JOptionPane.showMessageDialog(addOrderPane, "Invalid date format. Please use yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 String status = "Pending";

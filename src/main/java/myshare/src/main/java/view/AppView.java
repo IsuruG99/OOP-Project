@@ -20,11 +20,14 @@ public class AppView extends JFrame {
     private JButton btnAddEmployees;
     private JButton btnViewEmployees;
     private JButton btnRemoveEmployees;
-    private JButton btnAllocateEmployees;
+    private JButton btnDeallocateEmployees;
     private JButton btnViewInventory;
     private JPanel inventoryPane;
     private JPanel employeePane;
     private JPanel notifiyPane;
+    private JPanel homePane;
+    private JPanel allocationPane;
+    private JButton btnAllocateEmployees;
 
     public AppView() {
         setTitle("MyShare Management System");
@@ -107,6 +110,20 @@ public class AppView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new inventoryView();
+            }
+        });
+
+        // Allocation buttons
+        btnAllocateEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new allocationView();
+            }
+        });
+        btnDeallocateEmployees.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new deallocationView();
             }
         });
     }

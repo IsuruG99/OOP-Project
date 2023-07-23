@@ -80,21 +80,4 @@ public class Order {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
-
-    public String toJson() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        String dateString = dateFormat.format(date);
-
-        StringBuilder jsonBuilder = new StringBuilder();
-        jsonBuilder.append("{");
-        jsonBuilder.append("\"orderId\":").append(orderId).append(",");
-        jsonBuilder.append("\"customerId\":").append(customerId).append(",");
-        jsonBuilder.append("\"email\":\"").append(email).append("\",");
-        jsonBuilder.append("\"type\":\"").append(type).append("\",");
-        jsonBuilder.append("\"date\":\"").append(dateString).append("\",");
-        jsonBuilder.append("\"status\":\"").append(status).append("\",");
-        jsonBuilder.append("\"totalAmount\":").append(totalAmount);
-        jsonBuilder.append("}");
-        return jsonBuilder.toString();
-    }
 }

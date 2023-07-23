@@ -62,9 +62,11 @@ public class employeeController {
                                     case "contact" -> contact = value;
                                     case "email" -> email = value;
                                     case "workStatus" -> {
-                                        //remove curly braces from the value and trim whitespace
-                                        value = value.replace("{", "").replace("}", "").trim();
-                                        workStatus = value;
+                                        if (value.contains("}")) {
+                                            workStatus = value.substring(0, value.length() - 1);
+                                        } else {
+                                            workStatus = value;
+                                        }
                                     }
                                 }
                             }
@@ -104,15 +106,13 @@ public class employeeController {
         StringBuilder json = new StringBuilder("[");
         for (int i = 0; i < employees.size(); i++) {
             employee employee = employees.get(i);
-            json.append("{")
-                    .append("\"empId\":").append(employee.getEmpId()).append(",")
-                    .append("\"name\":\"").append(employee.getName()).append("\",")
-                    .append("\"profession\":\"").append(employee.getProfession()).append("\",")
-                    .append("\"contact\":\"").append(employee.getContact()).append("\",")
-                    .append("\"email\":\"").append(employee.getEmail()).append("\",")
-                    .append("\"workStatus\":\"").append(employee.getWorkStatus()).append("\"")
-                    .append("}")
-                    .append("}");
+            //{"empId":1,"name": "Ruwan","profession": "Video Editor","contact": "0712812502","email": "john@gmail.com","workStatus": "Available"}
+            json.append("{\"empId\":").append(employee.getEmpId()).append(",");
+            json.append("\"name\":\"").append(employee.getName()).append("\",");
+            json.append("\"profession\":\"").append(employee.getProfession()).append("\",");
+            json.append("\"contact\":\"").append(employee.getContact()).append("\",");
+            json.append("\"email\":\"").append(employee.getEmail()).append("\",");
+            json.append("\"workStatus\":\"").append(employee.getWorkStatus()).append("\"}");
             if (i < employees.size() - 1) {
                 json.append(",");
             }
@@ -155,5 +155,21 @@ public class employeeController {
             }
         }
         return empId;
+    }
+
+    // update employee status for Allocation
+    public void updateEmployeeStatus(int empID, String working) {
+        // read the JSON file and parse employees
+        List<employee> employees = readFromJSON();
+        // update the employee status
+        for (int i = 0; i < employees.size(); i++) {
+            employee employee = employees.get(i);
+            if (employee.getEmpId() == empID) {
+                employee.setWorkStatus(working);
+                break;
+            }
+        }
+        // save the updated list to JSON
+        saveToJSON(employees);
     }
 }

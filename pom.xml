@@ -14,6 +14,8 @@
         <module>src/main/java/myshare</module>
         <module>src/main/java/employees</module>
         <module>src/main/java/inventory</module>
+        <module>src/main/java/allocation</module>
+        <module>src/main/java/report</module>
 
     </modules>
     <properties>
