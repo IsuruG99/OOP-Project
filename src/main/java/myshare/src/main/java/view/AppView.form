@@ -30,15 +30,10 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-<<<<<<< HEAD
-                  <background color="-12514300"/>
-                  <text value="Place Order"/>
-=======
                   <font size="36"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
                   <text value="Welcome!"/>
->>>>>>> upstream/main
                 </properties>
               </component>
               <component id="70e57" class="javax.swing.JLabel" binding="lblSubtitle">
@@ -215,7 +210,16 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <component id="2e833" class="javax.swing.JButton" binding="btnFinalizeAndNotifyCustomer">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Finalize and Notify Customer"/>
+                </properties>
+              </component>
+            </children>
           </grid>
         </children>
       </tabbedpane>

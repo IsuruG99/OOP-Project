@@ -56,7 +56,6 @@ public class allocationView extends JFrame {
             int empID = Integer.parseInt(Objects.requireNonNull(cbEmpID.getSelectedItem()).toString());
             //check return message from controller and if 1: success, 0: fail
             if (allocController.allocateOrder(orderID, empID, txtEmpEmail.getText(), txtCustomerEmail.getText()) == 1) {
-                JOptionPane.showMessageDialog(allocPane, "Order allocated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 //change the status of the order to "Allocated"
                 Object [][] data = new OrderController().getAllOrders();
                 for (Object[] datum : data) {
@@ -71,9 +70,14 @@ public class allocationView extends JFrame {
                         new employeeController().updateEmployeeStatus(empID, "Working");
                     }
                 }
+                JOptionPane.showMessageDialog(allocPane, "Order allocated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(allocPane);
+                frame.dispose();
             } else {
                 //error message
                 JOptionPane.showMessageDialog(allocPane, "Invalid order ID or employee ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(allocPane);
+                frame.dispose();
             }
         });
 

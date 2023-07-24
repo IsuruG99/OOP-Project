@@ -16,11 +16,13 @@ public class cancelAllocationForm extends JFrame {
     private JLabel lblOrderID;
     private JLabel lblCustomerEmail;
     private JTextField txtCustomerEmail;
-    private JLabel lblEmployeeLabel;
     private JComboBox cbEmpID;
-    private JButton btnAllocate;
+    private JButton btnDeallocate;
     private JTextField txtOrderID;
     private JPanel deallocPane;
+    private JComboBox cbAssignID;
+    private JTextField txtEmpID;
+    private JLabel lblAssignID;
 
     //normal Constructor to create the view
     public cancelAllocationForm() {
@@ -39,12 +41,15 @@ public class cancelAllocationForm extends JFrame {
         populateFields();
 
         // Allocate button action listener
-        btnAllocate.addActionListener(e -> {
+        btnDeallocate.addActionListener(e -> {
+            int assignID = Integer.parseInt(Objects.requireNonNull(cbAssignID.getSelectedItem()).toString());
             int orderID = Integer.parseInt(Objects.requireNonNull(txtOrderID.getText()).toString());
-            int empID = Integer.parseInt(Objects.requireNonNull(cbEmpID.getSelectedItem()).toString());
+            int empID = Integer.parseInt(Objects.requireNonNull(txtEmpID.getText()).toString());
+            System.out.println(assignID);
+            System.out.println(orderID);
+            System.out.println(empID);
             //check return message from controller and if 1: success, 0: fail
-            if (allocController.deallocateOrder(orderID, empID) == 1) {
-                JOptionPane.showMessageDialog(deallocPane, "Order deallocated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            if (allocController.deallocateOrder(assignID) == 1) {
                 //change the status of the order to "Pending
                 Object[][] data = new OrderController().getAllOrders();
                 for (Object[] datum : data) {
@@ -59,12 +64,13 @@ public class cancelAllocationForm extends JFrame {
                         new employeeController().updateEmployeeStatus(empID, "Available");
                     }
                 }
-
-                //System.exit(0);
+                JOptionPane.showMessageDialog(deallocPane, "Order deallocated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(deallocPane);
+                frame.dispose();
             } else {
-                //error message
-                JOptionPane.showMessageDialog(deallocPane, "Invalid order ID.", "Error", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
+                JOptionPane.showMessageDialog(deallocPane, "Invalid Assign ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(deallocPane);
+                frame.dispose();
             }
         });
     }
@@ -74,20 +80,23 @@ public class cancelAllocationForm extends JFrame {
         Object[][] data = allocController.viewFromJSON();
         //populate all allocated orders in the combo box
         for (Object[] datum : data) {
-            cbEmpID.addItem(datum[1]);
+            cbAssignID.addItem(datum[0]);
+            if (txtOrderID.getText().isEmpty()) {
+                txtOrderID.setText(datum[1].toString());
+                txtEmpID.setText(datum[2].toString());
+                txtEmpEmail.setText(datum[3].toString());
+                txtCustomerEmail.setText(datum[4].toString());
+            }
         }
-        // initial values
-        txtOrderID.setText(data[0][0].toString());
-        txtEmpEmail.setText(data[0][2].toString());
-        txtCustomerEmail.setText(data[0][3].toString());
         // action listener for combo box
-        cbEmpID.addActionListener(e -> {
-            String empID = cbEmpID.getSelectedItem().toString();
+        cbAssignID.addActionListener(e -> {
+            int assignID = Integer.parseInt(Objects.requireNonNull(cbAssignID.getSelectedItem()).toString());
             for (Object[] datum : data) {
-                if (datum[1].toString().equals(empID)) {
-                    txtOrderID.setText(datum[0].toString());
-                    txtEmpEmail.setText(datum[2].toString());
-                    txtCustomerEmail.setText(datum[3].toString());
+                if (datum[0].equals(assignID)) {
+                    txtOrderID.setText(datum[1].toString());
+                    txtEmpID.setText(datum[2].toString());
+                    txtEmpEmail.setText(datum[3].toString());
+                    txtCustomerEmail.setText(datum[4].toString());
                 }
             }
         });

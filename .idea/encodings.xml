@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/newordenotify/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/newordenotify/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/MyShareApp/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/MyShareApp/src/main/resources" charset="UTF-8" />
@@ -12,17 +14,16 @@
     <file url="file://$PROJECT_DIR$/src/main/java/employees/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/finalize/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/finalize/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/finalizeorder/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/finalizeorder/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/inventory/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/inventory/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/myshare/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/myshare/src/main/resources" charset="UTF-8" />
-HEAD
     <file url="file://$PROJECT_DIR$/src/main/java/newordenotify/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/newordenotify/src/main/resources" charset="UTF-8" />
-
     <file url="file://$PROJECT_DIR$/src/main/java/report/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/report/src/main/resources" charset="UTF-8" />
-upstream/main
     <file url="file://$PROJECT_DIR$/src/main/java/suppliers/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/suppliers/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

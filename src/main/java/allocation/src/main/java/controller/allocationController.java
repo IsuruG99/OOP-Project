@@ -15,13 +15,14 @@ public class allocationController {
     public Object[][] viewFromJSON() {
         List<allocation> allocate = readFromJSON();
         // Prepare the data for the table
-        Object[][] data = new Object[allocate.size()][4];
+        Object[][] data = new Object[allocate.size()][5];
         for (int i = 0; i < allocate.size(); i++) {
             allocation alloc = allocate.get(i);
-            data[i][0] = alloc.getOrderID();
-            data[i][1] = alloc.getEmpID();
-            data[i][2] = alloc.getEmpEmail();
-            data[i][3] = alloc.getCustomerEmail();
+            data[i][0] = alloc.getAssignID();
+            data[i][1] = alloc.getOrderID();
+            data[i][2] = alloc.getEmpID();
+            data[i][3] = alloc.getEmpEmail();
+            data[i][4] = alloc.getCustomerEmail();
         }
         return data;
     }
@@ -36,6 +37,7 @@ public class allocationController {
             for (String allocJson : allocJsonArray) {
                 if (!allocJson.isEmpty()) {
                     String[] keyValuePairs = allocJson.split(","); // Split the orderJson by commas
+                    int assignID = 0;
                     int orderID = 0;
                     int empID = 0;
                     String empEmail = "";
@@ -52,6 +54,7 @@ public class allocationController {
                                 String key = pair[0].trim().replace("\"", ""); // Remove quotes from the key
                                 String value = pair[1].trim().replace("\"", ""); // Remove quotes from the value
                                 switch (key) {
+                                    case "assignID" -> assignID = Integer.parseInt(value);
                                     case "orderID" -> orderID = Integer.parseInt(value);
                                     case "empID" -> empID = Integer.parseInt(value);
                                     case "empEmail" -> empEmail = value;
@@ -64,12 +67,12 @@ public class allocationController {
                                 }
                             }
                             // Check if all the values are not empty
-                            if (orderID != 0 && empID != 0 && !empEmail.isEmpty() && !customerEmail.isEmpty()) {
+                            if (assignID != 0 && orderID != 0 && empID != 0 && !empEmail.isEmpty() && !customerEmail.isEmpty()) {
                                 validOrder = true;
                             }
                         }
                         if (validOrder) {
-                            allocate.add(new allocation(orderID, empID, empEmail, customerEmail));
+                            allocate.add(new allocation(assignID, orderID, empID, empEmail, customerEmail));
                         }
                     }
                 }
@@ -82,7 +85,14 @@ public class allocationController {
 
     public int allocateOrder(int orderID, int empID, String empEmail, String customerEmail) {
         List<allocation> allocate = readFromJSON();
-        allocate.add(new allocation(orderID, empID, empEmail, customerEmail));
+        //get highest assignID and increment by 1
+        int assignID = 1;
+        for (allocation alloc : allocate) {
+            if (alloc.getAssignID() > assignID) {
+                assignID = alloc.getAssignID();
+            }
+        }
+        allocate.add(new allocation(assignID, orderID, empID, empEmail, customerEmail));
         saveToJson(allocate);
         return 1;
     }
@@ -92,6 +102,7 @@ public class allocationController {
         for (int i = 0; i < allocate.size(); i++) {
             allocation alloc = allocate.get(i);
             json.append("{");
+            json.append("\"assignID\": ").append(alloc.getAssignID()).append(",");
             json.append("\"orderID\": ").append(alloc.getOrderID()).append(",");
             json.append("\"empID\": ").append(alloc.getEmpID()).append(",");
             json.append("\"empEmail\": \"").append(alloc.getEmpEmail()).append("\",");
@@ -110,11 +121,11 @@ public class allocationController {
     }
 
     // delete order from JSON file
-    public int deallocateOrder(int orderID, int empID) {
+    public int deallocateOrder(int assignID) {
         List<allocation> allocate = readFromJSON();
         int valid = 0;
         for (allocation alloc : allocate) {
-            if (alloc.getOrderID() == orderID && alloc.getEmpID() == empID) {
+            if (alloc.getAssignID() == assignID) {
                 valid = 1;
                 allocate.remove(alloc);
                 break;
@@ -122,7 +133,8 @@ public class allocationController {
         }
         if (valid == 1) {
             saveToJson(allocate);
+            return 1;
         }
-        return valid;
+        return 1;
     }
 }

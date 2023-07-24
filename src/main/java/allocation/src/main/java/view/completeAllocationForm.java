@@ -19,11 +19,14 @@ public class completeAllocationForm extends JFrame {
     private JTextField txtCompleteStatus;
     private JLabel lblCompleteTotal;
     private JTextField txtCompleteTotal;
-    private JButton completeOrderButton;
+    private JButton btnCompleteOrder;
     private JComboBox cbCompleteOrderID;
     private JLabel lblCompleteEmail;
     private JTextField txtCompleteEmail;
     private JPanel completeOrderPane;
+    private JComboBox cbAssignID;
+    private JLabel lblAssignID;
+    private JTextField txtCompleteOrderID;
 
     public completeAllocationForm() {
         // Set the title, default close operation, size and location of the frame
@@ -40,24 +43,26 @@ public class completeAllocationForm extends JFrame {
         // Populate the combo box with order IDs
         populateFields();
 
-        completeOrderButton.addActionListener(e -> {
+        btnCompleteOrder.addActionListener(e -> {
             // ask for confirmation before deleting order
             int check = JOptionPane.showConfirmDialog(null, "Are you sure you want to complete this order?", "Warning", JOptionPane.YES_NO_OPTION);
             if (check == JOptionPane.NO_OPTION) {
                 return;
             }
             int orderId = Integer.parseInt(Objects.requireNonNull(cbCompleteOrderID.getSelectedItem()).toString());
-            // make a loop on allocController.viewFromJSON() to find the employee ID
             int empId = 0;
+            int assignID = 0;
+            //find the assignID of the order by looping on the allocationController.viewFromJSON()
             Object[][] idCheck = allocController.viewFromJSON();
             for (Object[] datum : idCheck) {
-                if (datum[0].equals(orderId)) {
+                if (datum[1].equals(orderId)) {
+                    assignID = Integer.parseInt(datum[2].toString());
                     empId = Integer.parseInt(datum[1].toString());
                 }
             }
 
             // Set Order status to complete
-            if (allocController.deallocateOrder(orderId, empId) == 1) {
+            if (allocController.deallocateOrder(assignID) == 1) {
                 JOptionPane.showMessageDialog(completeOrderPane, "Order submitted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 // completeOrder(), changing order status to "Complete"
                 Object[][] data = new OrderController().getAllOrders();
@@ -74,7 +79,7 @@ public class completeAllocationForm extends JFrame {
                     }
                 }
             }
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(null);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(completeOrderPane);
             frame.dispose();
         });
     }
@@ -85,7 +90,7 @@ public class completeAllocationForm extends JFrame {
         for (Object[] datum : data) {
             if (datum[5].equals("Allocated")){
                 cbCompleteOrderID.addItem(datum[0]);
-                if (txtCompleteCustomerID.getText().equals("")){
+                if (txtCompleteCustomerID.getText().isEmpty()){
                     txtCompleteCustomerID.setText(datum[1].toString());
                     txtCompleteType.setText(datum[3].toString());
                     txtCompleteDate.setText(datum[4].toString());

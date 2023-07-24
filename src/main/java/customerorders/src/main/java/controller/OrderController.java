@@ -201,4 +201,24 @@ public class OrderController {
         }
         saveOrdersToJson(orders);
     }
+
+    public String finalizeOrder(int orderId) {
+        List<Order> orders = readOrdersFromJson();
+        // Find the order with the given orderId and update its status
+        String message = null;
+        for (Order order : orders) {
+            if (order.getOrderId() == orderId) {
+                // Send email to customer
+                String email = order.getEmail();
+                String subject = "Your MyShare Order is Ready";
+                String body = "Dear Customer, Your order has been finalized and is ready to be collected. Please contact us for more details.";
+                // there is no email service, so we will just print the email in a dialog box
+                message = "Email sent to " + email + "\nSubject: " + subject + "\nBody: " + body;
+                order.setStatus("Finalized");
+                break;
+            }
+        }
+        saveOrdersToJson(orders);
+        return message;
+    }
 }

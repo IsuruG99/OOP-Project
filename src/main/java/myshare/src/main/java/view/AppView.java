@@ -29,6 +29,7 @@ public class AppView extends JFrame {
     private JPanel allocationPane;
     private JButton btnAllocateEmployees;
     private JButton btnCompleteAssignment;
+    private JButton btnFinalizeAndNotifyCustomer;
 
     public AppView() {
         setTitle("MyShare Management System");
@@ -124,6 +125,14 @@ public class AppView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new completeAllocationForm();
+            }
+        });
+
+        //Notify Customer button
+        btnFinalizeAndNotifyCustomer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new finalizeForm();
             }
         });
     }
