@@ -1,7 +1,6 @@
 package view;
 
 import controller.OrderController;
-import model.Order;
 
 import javax.swing.*;
 import java.awt.*;

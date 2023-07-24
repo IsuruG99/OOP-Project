@@ -26,7 +26,7 @@ public class finalizeForm extends JFrame{
     public finalizeForm() {
         setTitle("Finalize Order");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(300, 500);
+        setSize(400, 600);
         setLocationRelativeTo(null);
         // Set the main panel as the content pane
         setContentPane(finalizePane);
