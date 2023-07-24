@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 
-public class NewordernotifyView extends JFrame {
+public class notifyemployeeView extends JFrame {
     private JPanel mainnotify;
     private JComboBox<String> profession;
     private JComboBox<Integer> EmpIDView;
@@ -21,12 +21,12 @@ public class NewordernotifyView extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            NewordernotifyView newOrderNotifyView = new NewordernotifyView();
+            NewordernotifyView newOrderNotifyView = new notifyemployeeView();
             newOrderNotifyView.displayNewordernotify();
         });
     }
 
-    public NewordernotifyView() {
+    public notifyemployeeView() {
         NewordernotifyController newOrderNotifyController = new NewordernotifyController();
         Object[][] data = newOrderNotifyController.getFromJSON();
         profession = new JComboBox<>();
