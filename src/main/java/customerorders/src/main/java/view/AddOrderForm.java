@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class AddOrderForm {
+public class AddOrderForm extends JFrame {
     private JPanel addOrderPane;
     private JLabel lblAddDate;
     private JTextField txtAddDate;
@@ -32,6 +32,13 @@ public class AddOrderForm {
     private OrderController orderController;
 
     public AddOrderForm() {
+        setTitle("Add Order Form");
+        setContentPane(addOrderPane);
+        setSize(new Dimension(300, 500));
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         orderController = new OrderController();
 
         addOrderButton.addActionListener(new ActionListener() {
@@ -70,13 +77,7 @@ public class AddOrderForm {
         });
     }
 
-    public void displayForm() {
-        JFrame frame = new JFrame("Add Order Form");
-        frame.setContentPane(addOrderPane);
-        frame.setPreferredSize(new Dimension(300, 500));
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public static void main(String[] args) {
+        new AddOrderForm();
     }
 }

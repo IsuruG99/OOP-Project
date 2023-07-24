@@ -19,6 +19,13 @@ public class deleteEmployeeForm extends JFrame {
     private JComboBox cbName;
 
     public deleteEmployeeForm() {
+        setTitle("Delete Employee Form");
+        setContentPane(deleteEmployeePane);
+        setSize(300, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         employeeController employeeController = new employeeController();
         // populate fields
         populateFields();
@@ -67,21 +74,7 @@ public class deleteEmployeeForm extends JFrame {
         });
     }
 
-    //display delete employee form (used in Main.java)
-    public void displayDeleteEmployeeForm() {
-        JFrame frame = new JFrame("Delete Employee");
-        frame.setContentPane(new deleteEmployeeForm().deleteEmployeePane);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(400, 200);
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            deleteEmployeeForm deleteEmployeeForm = new deleteEmployeeForm();
-            deleteEmployeeForm.displayDeleteEmployeeForm();
-        });
+        new deleteEmployeeForm();
     }
 }

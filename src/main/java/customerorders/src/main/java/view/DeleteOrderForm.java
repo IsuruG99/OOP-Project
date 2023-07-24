@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DeleteOrderForm {
+public class DeleteOrderForm extends JFrame {
     private JLabel lblDeleteOrderID;
     private JTextField txtDeleteID;
     private JLabel lblDeleteDate;
@@ -29,6 +29,14 @@ public class DeleteOrderForm {
     private OrderController orderController;
 
     public DeleteOrderForm() {
+        setTitle("Delete Order Form");
+        setContentPane(removeOrderPane);
+        setSize(300, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
         orderController = new OrderController();
 
         // Populate the combo box with order IDs
@@ -83,14 +91,7 @@ public class DeleteOrderForm {
         });
     }
 
-    public void displayForm() {
-        JFrame frame = new JFrame("Delete Order Form");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.setContentPane(removeOrderPane);
-        frame.setPreferredSize(new Dimension(300, 500));
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
+    public static void main(String[] args) {
+        new DeleteOrderForm();
     }
 }

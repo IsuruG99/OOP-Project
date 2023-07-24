@@ -16,7 +16,7 @@ public class OrderView extends JFrame {
         setSize(900, 400);
         setVisible(true);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     // initializing Table
