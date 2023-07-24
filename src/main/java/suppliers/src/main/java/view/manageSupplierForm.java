@@ -3,7 +3,7 @@ package view;
 import controller.suppliersController;
 import javax.swing.*;
 
-public class deleteSupplierForm extends JFrame{
+public class manageSupplierForm extends JFrame{
     private JLabel lblDeleteSupplierID;
     private JTextField txtDeleteSupplierID;
     private JButton btnDeleteSupplier;
@@ -24,7 +24,7 @@ public class deleteSupplierForm extends JFrame{
     // do not dynamically create a new controller object
     // just use the one you already have
     // Created method DeleteSupplierForm
-    public deleteSupplierForm() {
+    public manageSupplierForm() {
         setTitle("Manage Supplier Form");
         setContentPane(deleteSupplierPane);
         setSize(400, 600);
@@ -107,6 +107,6 @@ public class deleteSupplierForm extends JFrame{
 
     // Main method
     public static void main(String[] args) {
-        new deleteSupplierForm();
+        new manageSupplierForm();
     }
 }

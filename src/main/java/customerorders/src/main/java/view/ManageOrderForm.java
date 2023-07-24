@@ -5,7 +5,7 @@ import controller.OrderController;
 import javax.swing.*;
 import java.sql.Date;
 
-public class DeleteOrderForm extends JFrame {
+public class ManageOrderForm extends JFrame {
     private JLabel lblDeleteOrderID;
     private JTextField txtDeleteID;
     private JLabel lblDeleteDate;
@@ -28,7 +28,7 @@ public class DeleteOrderForm extends JFrame {
 
     private OrderController orderController;
 
-    public DeleteOrderForm() {
+    public ManageOrderForm() {
         setTitle("Manage Order Form");
         setContentPane(removeOrderPane);
         setSize(400, 600);
@@ -117,6 +117,6 @@ public class DeleteOrderForm extends JFrame {
     }
 
     public static void main(String[] args) {
-        new DeleteOrderForm();
+        new ManageOrderForm();
     }
 }

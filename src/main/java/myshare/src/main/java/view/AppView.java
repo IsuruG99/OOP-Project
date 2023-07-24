@@ -50,7 +50,7 @@ public class AppView extends JFrame {
         btnRemoveOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DeleteOrderForm();
+                new ManageOrderForm();
             }
         });
         btnAddOrder.addActionListener(new ActionListener() {
@@ -76,7 +76,7 @@ public class AppView extends JFrame {
         btnDeleteSupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new deleteSupplierForm();
+                new manageSupplierForm();
             }
         });
 
@@ -96,7 +96,7 @@ public class AppView extends JFrame {
         btnRemoveEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new deleteEmployeeForm();
+                new manageEmployeeForm();
             }
         });
 

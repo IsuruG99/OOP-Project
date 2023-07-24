@@ -4,7 +4,7 @@ import controller.employeeController;
 
 import javax.swing.*;
 
-public class deleteEmployeeForm extends JFrame {
+public class manageEmployeeForm extends JFrame {
     private JTextField txtEmpID;
     private JButton btnDeleteEmployee;
     private JLabel lblEmpID;
@@ -24,7 +24,7 @@ public class deleteEmployeeForm extends JFrame {
     private JComboBox cbStatus;
     private JComboBox cbName;
 
-    public deleteEmployeeForm() {
+    public manageEmployeeForm() {
         setTitle("Manage Employee Form");
         setContentPane(deleteEmployeePane);
         setSize(400, 600);
@@ -104,6 +104,6 @@ public class deleteEmployeeForm extends JFrame {
     }
 
     public static void main(String[] args) {
-        new deleteEmployeeForm();
+        new manageEmployeeForm();
     }
 }
