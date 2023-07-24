@@ -3,7 +3,7 @@ package view;
 import controller.suppliersController;
 import javax.swing.*;
 
-public class DeleteSupplierForm {
+public class deleteSupplierForm extends JFrame{
     private JLabel lblDeleteSupplierID;
     private JTextField txtDeleteSupplierID;
     private JButton btnDeleteSupplier;
@@ -20,7 +20,14 @@ public class DeleteSupplierForm {
     // do not dynamically create a new controller object
     // just use the one you already have
     // Created method DeleteSupplierForm
-    public DeleteSupplierForm() {
+    public deleteSupplierForm() {
+        setTitle("Delete Supplier Form");
+        setContentPane(deleteSupplierPane);
+        setSize(300, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         suppliersController suppliersController = new suppliersController();
         //new method to populate fields
         populateFields();
@@ -67,21 +74,8 @@ public class DeleteSupplierForm {
         });
     }
 
-    // display delete supplier form (used in Main.java)
-    void displayDeleteSupplierForm() {
-        JFrame frame = new JFrame("Delete Supplier");
-        frame.setContentPane(new DeleteSupplierForm().deleteSupplierPane);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     // Main method
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            DeleteSupplierForm deleteSupplierForm = new DeleteSupplierForm();
-            deleteSupplierForm.displayDeleteSupplierForm();
-        });
+        new deleteSupplierForm();
     }
 }

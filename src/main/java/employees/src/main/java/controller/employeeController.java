@@ -158,14 +158,14 @@ public class employeeController {
     }
 
     // update employee status for Allocation
-    public void updateEmployeeStatus(int empID, String working) {
+    public void updateEmployeeStatus(int empID, String status) {
         // read the JSON file and parse employees
         List<employee> employees = readFromJSON();
         // update the employee status
         for (int i = 0; i < employees.size(); i++) {
             employee employee = employees.get(i);
             if (employee.getEmpId() == empID) {
-                employee.setWorkStatus(working);
+                employee.setWorkStatus(status);
                 break;
             }
         }

@@ -16,6 +16,7 @@
         <module>src/main/java/inventory</module>
         <module>src/main/java/allocation</module>
         <module>src/main/java/report</module>
+        <module>src/main/java/finalize</module>
 
     </modules>
     <properties>

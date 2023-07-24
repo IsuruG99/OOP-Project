@@ -13,7 +13,7 @@ public class suppliersView extends JFrame {
     // Constructor
     public suppliersView() {
         setContentPane(supplierPane);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Suppliers View");
         setSize(900, 400);
         setLocationRelativeTo(null);
