@@ -4,6 +4,7 @@ import controller.suppliersController;
 import javax.swing.*;
 import java.util.Objects;
 
+
 public class addSupplierForm extends JFrame {
     private JTextField txtAddSupplierID;
     private JLabel lblAddName;
@@ -25,6 +26,7 @@ public class addSupplierForm extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         // do not dynamically create a new controller object
         // just use the one you already have
 
@@ -43,7 +45,6 @@ public class addSupplierForm extends JFrame {
             JOptionPane.showMessageDialog(addSupplierPane, "Supplier added successfully.");
         });
     }
-
     public static void main(String[] args) {
         new addSupplierForm();
     }
