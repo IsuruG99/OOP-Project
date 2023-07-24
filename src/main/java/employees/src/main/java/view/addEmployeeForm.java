@@ -18,6 +18,13 @@ public class addEmployeeForm extends JFrame {
     private JButton btnAddEmployee;
 
     public addEmployeeForm() {
+        setTitle("Add Employee Form");
+        setContentPane(addEmployeePane);
+        setSize(300, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         btnAddEmployee.addActionListener(e -> {
             employeeController employeeController = new employeeController();
             String name = txtAddName.getText();
@@ -39,19 +46,7 @@ public class addEmployeeForm extends JFrame {
         });
     }
 
-    //display add employee form (used in Main.java)
-    public void displayAddEmployeeForm() {
-        JFrame frame = new JFrame("Add Employee");
-        frame.setContentPane(new addEmployeeForm().addEmployeePane);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            addEmployeeForm addEmployeeForm = new addEmployeeForm();
-        });
+        new addEmployeeForm();
     }
 }

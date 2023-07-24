@@ -177,13 +177,25 @@ public class OrderController {
     }
 
     // Update order status for Allocation
-    public void updateOrderStatus(int orderID, String allocated) {
+    public void updateOrderStatus(int orderID, String status) {
         List<Order> orders = readOrdersFromJson();
 
         // Find the order with the given orderId and update its status
         for (Order order : orders) {
             if (order.getOrderId() == orderID) {
-                order.setStatus(allocated);
+                order.setStatus(status);
+                break;
+            }
+        }
+        saveOrdersToJson(orders);
+    }
+
+    public void completeOrder(int orderId) {
+        List<Order> orders = readOrdersFromJson();
+        // Find the order with the given orderId and update its status
+        for (Order order : orders) {
+            if (order.getOrderId() == orderId) {
+                order.setStatus("Completed");
                 break;
             }
         }

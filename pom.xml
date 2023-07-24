@@ -12,10 +12,13 @@
         <module>src/main/java/customerorders</module>
         <module>src/main/java/suppliers</module>
         <module>src/main/java/myshare</module>
+        <module>newordenotify</module>
         <module>src/main/java/employees</module>
         <module>src/main/java/inventory</module>
         <module>src/main/java/allocation</module>
         <module>src/main/java/report</module>
+        <module>src/main/java/finalize</module>
+
 
     </modules>
     <properties>
