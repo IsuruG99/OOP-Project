@@ -172,4 +172,23 @@ public class employeeController {
         // save the updated list to JSON
         saveToJSON(employees);
     }
+
+    public void updateInJSON(int empID, String name, String profession, String contact, String email, String status) {
+        // read the JSON file and parse employees
+        List<employee> employees = readFromJSON();
+        // update the employee status
+        for (int i = 0; i < employees.size(); i++) {
+            employee employee = employees.get(i);
+            if (employee.getEmpId() == empID) {
+                employee.setName(name);
+                employee.setProfession(profession);
+                employee.setContact(contact);
+                employee.setEmail(email);
+                employee.setWorkStatus(status);
+                break;
+            }
+        }
+        // save the updated list to JSON
+        saveToJSON(employees);
+    }
 }

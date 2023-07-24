@@ -221,4 +221,21 @@ public class OrderController {
         saveOrdersToJson(orders);
         return message;
     }
+
+    public void updateOrder(int orderId, int customerId, String email, String type, Date date, String status, double total) {
+        List<Order> orders = readOrdersFromJson();
+        // Find the order with the given orderId and update its status
+        for (Order order : orders) {
+            if (order.getOrderId() == orderId) {
+                order.setCustomerId(customerId);
+                order.setEmail(email);
+                order.setType(type);
+                order.setDate(date);
+                order.setStatus(status);
+                order.setTotalAmount(total);
+                break;
+            }
+        }
+        saveOrdersToJson(orders);
+    }
 }
