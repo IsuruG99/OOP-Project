@@ -28,6 +28,7 @@ public class AppView extends JFrame {
     private JPanel homePane;
     private JPanel allocationPane;
     private JButton btnAllocateEmployees;
+    private JButton btnCompleteAssignment;
 
     public AppView() {
         setTitle("MyShare Management System");
@@ -48,15 +49,13 @@ public class AppView extends JFrame {
         btnRemoveOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DeleteOrderForm deleteOrderForm = new DeleteOrderForm();
-                deleteOrderForm.displayForm();
+                new DeleteOrderForm();
             }
         });
         btnAddOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddOrderForm addOrderForm = new AddOrderForm();
-                addOrderForm.displayForm();
+                new AddOrderForm();
             }
         });
 
@@ -64,8 +63,7 @@ public class AppView extends JFrame {
         btnAddSupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddSupplierForm addSupplierForm = new AddSupplierForm();
-                addSupplierForm.displayAddSupplierForm();
+                new addSupplierForm();
             }
         });
         btnDisplaySupplier.addActionListener(new ActionListener() {
@@ -77,8 +75,7 @@ public class AppView extends JFrame {
         btnDeleteSupplier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DeleteSupplierForm deleteSupplierForm = new DeleteSupplierForm();
-                deleteSupplierForm.displayDeleteSupplierForm();
+                new deleteSupplierForm();
             }
         });
 
@@ -86,22 +83,19 @@ public class AppView extends JFrame {
         btnAddEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addEmployeeForm addEmployeeForm = new addEmployeeForm();
-                addEmployeeForm.displayAddEmployeeForm();
+                new addEmployeeForm();
             }
         });
         btnViewEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                employeeView employeeView = new employeeView();
-                employeeView.loadEmployeeFromController();
+                new employeeView();
             }
         });
         btnRemoveEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteEmployeeForm deleteEmployeeForm = new deleteEmployeeForm();
-                deleteEmployeeForm.displayDeleteEmployeeForm();
+                new deleteEmployeeForm();
             }
         });
 
@@ -123,17 +117,18 @@ public class AppView extends JFrame {
         btnDeallocateEmployees.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new deallocationView();
+                new cancelAllocationForm();
+            }
+        });
+        btnCompleteAssignment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new completeAllocationForm();
             }
         });
     }
 
-
-
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            AppView appView = new AppView();
-        });
+        new AppView();
     }
 }

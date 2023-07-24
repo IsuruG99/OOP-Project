@@ -71,19 +71,6 @@ public class allocationView extends JFrame {
                         new employeeController().updateEmployeeStatus(empID, "Working");
                     }
                 }
-                //refresh the combo boxes and empty the text fields
-                cbOrderID.removeAllItems();
-                txtCustomerID.setText("");
-                txtCustomerEmail.setText("");
-                txtOrderType.setText("");
-                txtOrderStatus.setText("");
-                cbEmpID.removeAllItems();
-                txtEmpName.setText("");
-                txtEmpProfession.setText("");
-                txtEmpEmail.setText("");
-                txtEmpStatus.setText("");
-                populateOrders();
-                populateEmployees();
             } else {
                 //error message
                 JOptionPane.showMessageDialog(allocPane, "Invalid order ID or employee ID.", "Error", JOptionPane.ERROR_MESSAGE);

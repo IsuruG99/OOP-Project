@@ -4,7 +4,7 @@ import controller.suppliersController;
 import javax.swing.*;
 import java.util.Objects;
 
-public class AddSupplierForm extends JFrame {
+public class addSupplierForm extends JFrame {
     private JTextField txtAddSupplierID;
     private JLabel lblAddName;
     private JTextField txtAddName;
@@ -18,7 +18,13 @@ public class AddSupplierForm extends JFrame {
     private JPanel addSupplierPane;
     private JComboBox cbAddProfession;
 
-    public AddSupplierForm() {
+    public addSupplierForm() {
+        setTitle("Add Supplier Form");
+        setContentPane(addSupplierPane);
+        setSize(300, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         // do not dynamically create a new controller object
         // just use the one you already have
 
@@ -38,25 +44,7 @@ public class AddSupplierForm extends JFrame {
         });
     }
 
-    // display add supplier form (used in Main.java)
-    public void displayAddSupplierForm() {
-        JFrame frame = new JFrame("Add Supplier");
-        frame.setContentPane(new AddSupplierForm().addSupplierPane);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            AddSupplierForm addSupplierForm = new AddSupplierForm();
-            addSupplierForm.displayAddSupplierForm();
-        });
-    }
-
-    // getters
-    public JPanel getAddSupplierPane() {
-        return addSupplierPane;
+        new addSupplierForm();
     }
 }

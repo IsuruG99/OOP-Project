@@ -7,7 +7,7 @@ import controller.employeeController;
 import javax.swing.*;
 import java.util.Objects;
 
-public class deallocationView extends JFrame {
+public class cancelAllocationForm extends JFrame {
     private JLabel lblEmpID;
     private JLabel lblEmail;
     private JTextField txtEmpEmail;
@@ -23,7 +23,7 @@ public class deallocationView extends JFrame {
     private JPanel deallocPane;
 
     //normal Constructor to create the view
-    public deallocationView() {
+    public cancelAllocationForm() {
         setTitle("Deallocation");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 600);
@@ -95,6 +95,6 @@ public class deallocationView extends JFrame {
 
     //main
     public static void main(String[] args) {
-        new deallocationView();
+        new cancelAllocationForm();
     }
 }
