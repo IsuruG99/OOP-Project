@@ -15,15 +15,19 @@ public class deleteSupplierForm extends JFrame{
     private JTextField txtAddEmail;
     private JLabel lblAddProfession;
     private JTextField txtProfession;
+    private JTextField txtName;
+    private JComboBox cbSpID;
+    private JComboBox cbProfession;
+    private JButton btnUpdateSupplier;
     private JComboBox cbName;
 
     // do not dynamically create a new controller object
     // just use the one you already have
     // Created method DeleteSupplierForm
     public deleteSupplierForm() {
-        setTitle("Delete Supplier Form");
+        setTitle("Manage Supplier Form");
         setContentPane(deleteSupplierPane);
-        setSize(300, 500);
+        setSize(400, 600);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,6 +35,25 @@ public class deleteSupplierForm extends JFrame{
         suppliersController suppliersController = new suppliersController();
         //new method to populate fields
         populateFields();
+
+        btnUpdateSupplier.addActionListener(e -> {
+            // ask for confirmation before deleting supplier
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to update this supplier?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (dialogResult == JOptionPane.NO_OPTION) {
+                return;
+            }
+            int supplierId = Integer.parseInt(cbSpID.getSelectedItem().toString());
+            String name = txtName.getText();
+            String profession = cbProfession.getSelectedItem().toString();
+            String contact = txtDeleteContact.getText();
+            String email = txtAddEmail.getText();
+
+            // update supplier in JSON file
+            suppliersController.updateInJSON(supplierId, name, profession, contact, email);
+            JOptionPane.showMessageDialog(deleteSupplierPane, "Supplier updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(deleteSupplierPane);
+            frame.dispose();
+        });
 
         btnDeleteSupplier.addActionListener(e -> {
             // ask for confirmation before deleting supplier
@@ -44,11 +67,13 @@ public class deleteSupplierForm extends JFrame{
             if(suppliersController.deleteFromJSON(supplierId) == 1){
                 JOptionPane.showMessageDialog(deleteSupplierPane, "Supplier deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 //quit the form
-                System.exit(0);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(deleteSupplierPane);
+                frame.dispose();
             }else{
                 //error message
                 JOptionPane.showMessageDialog(deleteSupplierPane, "Invalid supplier ID.", "Error", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(deleteSupplierPane);
+                frame.dispose();
             }
         });
     }
@@ -58,15 +83,21 @@ public class deleteSupplierForm extends JFrame{
         Object[][] data = suppliersController.viewFromJSON();
         //populate all supplier names in the combo box
         for (Object[] datum : data) {
-            cbName.addItem(datum[1]);
+            cbSpID.addItem(datum[0]);
+            if (txtName.getText().isEmpty()) {
+                txtName.setText(datum[1].toString());
+                cbProfession.setSelectedItem(datum[2].toString());
+                txtDeleteContact.setText(datum[3].toString());
+                txtAddEmail.setText(datum[4].toString());
+            }
         }
         // action listener for combo box
-        cbName.addActionListener(e -> {
-            String name = cbName.getSelectedItem().toString();
+        cbSpID.addActionListener(e -> {
+            int spID = Integer.parseInt(cbSpID.getSelectedItem().toString());
             for (Object[] datum : data) {
-                if (datum[1].toString().equals(name)) {
-                    txtDeleteSupplierID.setText(datum[0].toString());
-                    txtProfession.setText(datum[2].toString());
+                if (datum[0].toString().equals(spID)) {
+                    txtName.setText(datum[1].toString());
+                    cbProfession.setSelectedItem(datum[2].toString());
                     txtDeleteContact.setText(datum[3].toString());
                     txtAddEmail.setText(datum[4].toString());
                 }

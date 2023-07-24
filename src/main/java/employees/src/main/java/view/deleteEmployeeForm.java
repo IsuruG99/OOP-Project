@@ -25,7 +25,7 @@ public class deleteEmployeeForm extends JFrame {
     private JComboBox cbName;
 
     public deleteEmployeeForm() {
-        setTitle("Delete Employee Form");
+        setTitle("Manage Employee Form");
         setContentPane(deleteEmployeePane);
         setSize(400, 600);
         setLocationRelativeTo(null);

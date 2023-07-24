@@ -154,4 +154,19 @@ public class suppliersController {
         }
         return spId + 1;
     }
+
+    public void updateInJSON(int supplierId, String name, String profession, String contact, String email) {
+        List<suppliers> suppliers = readFromJSON();
+        for (int i = 0; i < suppliers.size(); i++) {
+            suppliers supplier = suppliers.get(i);
+            if (supplier.getSpId() == supplierId) {
+                supplier.setName(name);
+                supplier.setProfession(profession);
+                supplier.setContact(contact);
+                supplier.setEmail(email);
+                saveToJSON(suppliers);
+                return;
+            }
+        }
+    }
 }

@@ -29,7 +29,7 @@ public class DeleteOrderForm extends JFrame {
     private OrderController orderController;
 
     public DeleteOrderForm() {
-        setTitle("Delete Order Form");
+        setTitle("Manage Order Form");
         setContentPane(removeOrderPane);
         setSize(400, 600);
         setLocationRelativeTo(null);

@@ -62,7 +62,7 @@
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Order View"/>
+                  <text value="View Orders"/>
                 </properties>
               </component>
               <component id="e4773" class="javax.swing.JButton" binding="btnRemoveOrder">
@@ -70,7 +70,7 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Remove Order"/>
+                  <text value="Manage Orders"/>
                 </properties>
               </component>
               <component id="ad2a6" class="javax.swing.JButton" binding="btnAddOrder">
@@ -112,7 +112,7 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Remove Supplier"/>
+                  <text value="Manage Suppliers"/>
                 </properties>
               </component>
             </children>
@@ -164,7 +164,7 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Remove Employees"/>
+                  <text value="Manage Employees"/>
                 </properties>
               </component>
             </children>
