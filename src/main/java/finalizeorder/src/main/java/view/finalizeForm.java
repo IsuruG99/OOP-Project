@@ -45,7 +45,8 @@ public class finalizeForm extends JFrame{
             // Set Order status to Finalized, the function output String message, we need to display it in a dialog box
             String message = new OrderController().finalizeOrder(orderId);
             JOptionPane.showMessageDialog(finalizePane, message, "Success", JOptionPane.INFORMATION_MESSAGE);
-
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(finalizePane);
+            frame.dispose();
         });
 
     }

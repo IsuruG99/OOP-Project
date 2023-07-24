@@ -30,6 +30,7 @@ public class AppView extends JFrame {
     private JButton btnAllocateEmployees;
     private JButton btnCompleteAssignment;
     private JButton btnFinalizeAndNotifyCustomer;
+    private JButton btnAssignmentNotification;
 
     public AppView() {
         setTitle("MyShare Management System");
@@ -133,6 +134,15 @@ public class AppView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new finalizeForm();
+            }
+        });
+        btnAssignmentNotification.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    notifyemployeeView newOrderNotifyView = new notifyemployeeView();
+                    newOrderNotifyView.displayNewordernotify();
+                });
             }
         });
     }

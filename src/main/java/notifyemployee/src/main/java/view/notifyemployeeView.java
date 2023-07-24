@@ -1,6 +1,6 @@
 package view;
 
-import controller.NewordernotifyController;
+import controller.notifyemployeeController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,14 +21,14 @@ public class notifyemployeeView extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            NewordernotifyView newOrderNotifyView = new notifyemployeeView();
+            notifyemployeeView newOrderNotifyView = new notifyemployeeView();
             newOrderNotifyView.displayNewordernotify();
         });
     }
 
     public notifyemployeeView() {
-        NewordernotifyController newOrderNotifyController = new NewordernotifyController();
-        Object[][] data = newOrderNotifyController.getFromJSON();
+        notifyemployeeController notifyemployeeController = new notifyemployeeController();
+        Object[][] data = notifyemployeeController.getFromJSON();
         profession = new JComboBox<>();
         EmpIDView = new JComboBox<>();
         EmpIDView.setPreferredSize(new Dimension(200, 30));
@@ -114,6 +114,8 @@ public class notifyemployeeView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Action to be performed when the SendEmail button is clicked
                 JOptionPane.showMessageDialog(SendEmail, "Notification sent");
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(SendEmail);
+                frame.dispose();
             }
         });
     }

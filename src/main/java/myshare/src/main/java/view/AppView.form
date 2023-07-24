@@ -203,7 +203,7 @@
               </component>
             </children>
           </grid>
-          <grid id="19d30" binding="notifiyPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="19d30" binding="notifiyPane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="50" left="50" bottom="50" right="50"/>
             <constraints>
               <tabbedpane title="Notifications"/>
@@ -213,10 +213,18 @@
             <children>
               <component id="2e833" class="javax.swing.JButton" binding="btnFinalizeAndNotifyCustomer">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Finalize and Notify Customer"/>
+                </properties>
+              </component>
+              <component id="d1273" class="javax.swing.JButton" binding="btnAssignmentNotification">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Assignment Notification"/>
                 </properties>
               </component>
             </children>

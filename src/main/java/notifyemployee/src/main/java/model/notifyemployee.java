@@ -1,13 +1,13 @@
 package model;
 
-public class Newordernotify {
+public class notifyemployee {
     // Attributes
     private int empId;
     private String email;
     private String profession;
 
     // Constructor
-    public Newordernotify(int empId, String email, String profession) {
+    public notifyemployee(int empId, String email, String profession) {
         this.empId = empId;
         this.email = email;
         this.profession = profession;
